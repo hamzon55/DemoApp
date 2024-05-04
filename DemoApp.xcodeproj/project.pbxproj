@@ -16,6 +16,8 @@
 		20C9DF202BE6F2B5000E4EAB /* DemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF1F2BE6F2B5000E4EAB /* DemoAppTests.swift */; };
 		20C9DF2A2BE6F2B5000E4EAB /* DemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF292BE6F2B5000E4EAB /* DemoAppUITests.swift */; };
 		20C9DF2C2BE6F2B5000E4EAB /* DemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF2B2BE6F2B5000E4EAB /* DemoAppUITestsLaunchTests.swift */; };
+		20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3A2BE6F3EF000E4EAB /* APIEndpoint.swift */; };
+		20C9DF3D2BE6F725000E4EAB /* DemoEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3C2BE6F725000E4EAB /* DemoEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		20C9DF252BE6F2B5000E4EAB /* DemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C9DF292BE6F2B5000E4EAB /* DemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITests.swift; sourceTree = "<group>"; };
 		20C9DF2B2BE6F2B5000E4EAB /* DemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		20C9DF3A2BE6F3EF000E4EAB /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		20C9DF3C2BE6F725000E4EAB /* DemoEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		20C9DF072BE6F2B4000E4EAB /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				20C9DF382BE6F333000E4EAB /* Core */,
 				20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */,
 				20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */,
 				20C9DF0C2BE6F2B4000E4EAB /* ViewController.swift */,
@@ -125,6 +130,23 @@
 				20C9DF2B2BE6F2B5000E4EAB /* DemoAppUITestsLaunchTests.swift */,
 			);
 			path = DemoAppUITests;
+			sourceTree = "<group>";
+		};
+		20C9DF382BE6F333000E4EAB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				20C9DF392BE6F395000E4EAB /* Network */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		20C9DF392BE6F395000E4EAB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				20C9DF3A2BE6F3EF000E4EAB /* APIEndpoint.swift */,
+				20C9DF3C2BE6F725000E4EAB /* DemoEndpoint.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,8 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C9DF3D2BE6F725000E4EAB /* DemoEndpoint.swift in Sources */,
 				20C9DF0D2BE6F2B4000E4EAB /* ViewController.swift in Sources */,
 				20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */,
+				20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */,
 				20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
