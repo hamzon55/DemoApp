@@ -18,6 +18,8 @@
 		20C9DF2C2BE6F2B5000E4EAB /* DemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF2B2BE6F2B5000E4EAB /* DemoAppUITestsLaunchTests.swift */; };
 		20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3A2BE6F3EF000E4EAB /* APIEndpoint.swift */; };
 		20C9DF3D2BE6F725000E4EAB /* DemoEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3C2BE6F725000E4EAB /* DemoEndpoint.swift */; };
+		20C9DF3F2BE6F856000E4EAB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3E2BE6F856000E4EAB /* APIClient.swift */; };
+		20C9DF412BE6F8AD000E4EAB /* APIClientURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF402BE6F8AD000E4EAB /* APIClientURLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		20C9DF2B2BE6F2B5000E4EAB /* DemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		20C9DF3A2BE6F3EF000E4EAB /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		20C9DF3C2BE6F725000E4EAB /* DemoEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEndpoint.swift; sourceTree = "<group>"; };
+		20C9DF3E2BE6F856000E4EAB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		20C9DF402BE6F8AD000E4EAB /* APIClientURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 			children = (
 				20C9DF3A2BE6F3EF000E4EAB /* APIEndpoint.swift */,
 				20C9DF3C2BE6F725000E4EAB /* DemoEndpoint.swift */,
+				20C9DF3E2BE6F856000E4EAB /* APIClient.swift */,
+				20C9DF402BE6F8AD000E4EAB /* APIClientURLSession.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -282,8 +288,10 @@
 			files = (
 				20C9DF3D2BE6F725000E4EAB /* DemoEndpoint.swift in Sources */,
 				20C9DF0D2BE6F2B4000E4EAB /* ViewController.swift in Sources */,
+				20C9DF412BE6F8AD000E4EAB /* APIClientURLSession.swift in Sources */,
 				20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */,
 				20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */,
+				20C9DF3F2BE6F856000E4EAB /* APIClient.swift in Sources */,
 				20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
