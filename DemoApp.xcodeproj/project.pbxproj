@@ -21,6 +21,7 @@
 		20C9DF3D2BE6F725000E4EAB /* DemoEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3C2BE6F725000E4EAB /* DemoEndpoint.swift */; };
 		20C9DF3F2BE6F856000E4EAB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3E2BE6F856000E4EAB /* APIClient.swift */; };
 		20C9DF412BE6F8AD000E4EAB /* APIClientURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF402BE6F8AD000E4EAB /* APIClientURLSession.swift */; };
+		20E093FB2BED29B700345150 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E093FA2BED29B700345150 /* AppCoordinator.swift */; };
 		8B4536503405D17F4F85F75E /* Pods_DemoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CD431479C4982EB2AF5298 /* Pods_DemoAppTests.framework */; };
 		A78B2AFB0E308C806050B7B5 /* Pods_DemoApp_DemoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE07415ACFB7CD23B47F9D2C /* Pods_DemoApp_DemoAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		20C9DF3C2BE6F725000E4EAB /* DemoEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEndpoint.swift; sourceTree = "<group>"; };
 		20C9DF3E2BE6F856000E4EAB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		20C9DF402BE6F8AD000E4EAB /* APIClientURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientURLSession.swift; sourceTree = "<group>"; };
+		20E093FA2BED29B700345150 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		47CD431479C4982EB2AF5298 /* Pods_DemoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EDF899EAC498DF0EA5AD2C /* Pods-DemoApp-DemoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp-DemoAppUITests.release.xcconfig"; path = "Target Support Files/Pods-DemoApp-DemoAppUITests/Pods-DemoApp-DemoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9E2AE9C74236011E12B8AB04 /* Pods-DemoAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoAppTests/Pods-DemoAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +126,8 @@
 		20C9DF072BE6F2B4000E4EAB /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				20E093F92BED29AC00345150 /* Coordinator */,
+				20E093F82BED25F800345150 /* Data */,
 				20C9DF442BE99BCE000E4EAB /* Modules */,
 				20C9DF422BE99AE7000E4EAB /* Model */,
 				20C9DF382BE6F333000E4EAB /* Core */,
@@ -194,6 +198,21 @@
 				205789CF2BEBEF1800DEA100 /* FirstViewModel.swift */,
 			);
 			path = FirstScreen;
+			sourceTree = "<group>";
+		};
+		20E093F82BED25F800345150 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		20E093F92BED29AC00345150 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				20E093FA2BED29B700345150 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		3B24A28BEA092B31B090B179 /* Pods */ = {
@@ -445,6 +464,7 @@
 				20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */,
 				20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */,
 				20C9DF3F2BE6F856000E4EAB /* APIClient.swift in Sources */,
+				20E093FB2BED29B700345150 /* AppCoordinator.swift in Sources */,
 				205789D02BEBEF1800DEA100 /* FirstViewModel.swift in Sources */,
 				20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */,
 			);

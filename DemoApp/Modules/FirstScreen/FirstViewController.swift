@@ -9,12 +9,15 @@ import UIKit
 
 class FirstViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    var coordinator: AppCoordinator?
+
     private lazy var tableView: UITableView = {
           let tableView = UITableView(frame: view.bounds, style: .plain)
           tableView.delegate = self
           tableView.dataSource = self
           return tableView
       }()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
