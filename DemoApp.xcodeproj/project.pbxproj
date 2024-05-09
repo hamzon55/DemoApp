@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0A0BCF5E611CADAFA47DBB0A /* Pods_DemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D5B9FAB53DC72CA9EEB4E9 /* Pods_DemoApp.framework */; };
-		205789CE2BEBEF0F00DEA100 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205789CD2BEBEF0F00DEA100 /* FirstViewController.swift */; };
 		205789D02BEBEF1800DEA100 /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205789CF2BEBEF1800DEA100 /* FirstViewModel.swift */; };
 		20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */; };
 		20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */; };
-		20C9DF0D2BE6F2B4000E4EAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0C2BE6F2B4000E4EAB /* ViewController.swift */; };
+		20C9DF0D2BE6F2B4000E4EAB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0C2BE6F2B4000E4EAB /* FirstViewController.swift */; };
 		20C9DF122BE6F2B5000E4EAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C9DF112BE6F2B5000E4EAB /* Assets.xcassets */; };
 		20C9DF152BE6F2B5000E4EAB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 20C9DF142BE6F2B5000E4EAB /* Base */; };
 		20C9DF202BE6F2B5000E4EAB /* DemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF1F2BE6F2B5000E4EAB /* DemoAppTests.swift */; };
@@ -45,12 +44,11 @@
 
 /* Begin PBXFileReference section */
 		031B56ABA3AC0215564C2C56 /* Pods-DemoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoAppTests.release.xcconfig"; path = "Target Support Files/Pods-DemoAppTests/Pods-DemoAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		205789CD2BEBEF0F00DEA100 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		205789CF2BEBEF1800DEA100 /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewModel.swift; sourceTree = "<group>"; };
 		20C9DF052BE6F2B4000E4EAB /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		20C9DF0C2BE6F2B4000E4EAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		20C9DF0C2BE6F2B4000E4EAB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		20C9DF112BE6F2B5000E4EAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20C9DF142BE6F2B5000E4EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20C9DF162BE6F2B5000E4EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				20C9DF382BE6F333000E4EAB /* Core */,
 				20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */,
 				20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */,
-				20C9DF0C2BE6F2B4000E4EAB /* ViewController.swift */,
 				20C9DF112BE6F2B5000E4EAB /* Assets.xcassets */,
 				20C9DF132BE6F2B5000E4EAB /* LaunchScreen.storyboard */,
 				20C9DF162BE6F2B5000E4EAB /* Info.plist */,
@@ -193,7 +190,7 @@
 		20C9DF452BE99BD4000E4EAB /* FirstScreen */ = {
 			isa = PBXGroup;
 			children = (
-				205789CD2BEBEF0F00DEA100 /* FirstViewController.swift */,
+				20C9DF0C2BE6F2B4000E4EAB /* FirstViewController.swift */,
 				205789CF2BEBEF1800DEA100 /* FirstViewModel.swift */,
 			);
 			path = FirstScreen;
@@ -251,6 +248,7 @@
 				20C9DF172BE6F2B5000E4EAB /* Sources */,
 				20C9DF182BE6F2B5000E4EAB /* Frameworks */,
 				20C9DF192BE6F2B5000E4EAB /* Resources */,
+				3FB4B9523552CDBB28AE9EB6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -373,6 +371,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3FB4B9523552CDBB28AE9EB6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DemoAppTests/Pods-DemoAppTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DemoAppTests/Pods-DemoAppTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DemoAppTests/Pods-DemoAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E2B3DD3E2C7926A9F9E3E31A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,9 +440,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				20C9DF3D2BE6F725000E4EAB /* DemoEndpoint.swift in Sources */,
-				20C9DF0D2BE6F2B4000E4EAB /* ViewController.swift in Sources */,
+				20C9DF0D2BE6F2B4000E4EAB /* FirstViewController.swift in Sources */,
 				20C9DF412BE6F8AD000E4EAB /* APIClientURLSession.swift in Sources */,
-				205789CE2BEBEF0F00DEA100 /* FirstViewController.swift in Sources */,
 				20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */,
 				20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */,
 				20C9DF3F2BE6F856000E4EAB /* APIClient.swift in Sources */,

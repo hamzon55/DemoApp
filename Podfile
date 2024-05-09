@@ -10,6 +10,7 @@ target 'DemoApp' do
   target 'DemoAppTests' do
     inherit! :search_paths
       pod 'SwiftLint'
+      pod 'SnapKit', '~> 5.0.0'
     # Pods for testing
   end
 
