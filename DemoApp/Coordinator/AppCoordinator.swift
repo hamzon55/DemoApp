@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 
 class AppCoordinator {
-    private let window: UIWindow
-    private let navigationController: UINavigationController
-    private var firstViewController: FirstViewController?
+    
+     let window: UIWindow
+     let navigationController: UINavigationController
+     var firstViewController: FirstViewController?
     
     init(window: UIWindow) {
         self.window = window
