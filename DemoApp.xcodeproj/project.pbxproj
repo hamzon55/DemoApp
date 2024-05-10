@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0A0BCF5E611CADAFA47DBB0A /* Pods_DemoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D5B9FAB53DC72CA9EEB4E9 /* Pods_DemoApp.framework */; };
 		205789D02BEBEF1800DEA100 /* FirstViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205789CF2BEBEF1800DEA100 /* FirstViewModel.swift */; };
+		207C720B2BEE6809009F1279 /* FirstViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C720A2BEE6809009F1279 /* FirstViewState.swift */; };
+		207C720E2BEE6942009F1279 /* SuperHeroCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C720D2BEE6942009F1279 /* SuperHeroCharacter.swift */; };
 		20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */; };
 		20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */; };
 		20C9DF0D2BE6F2B4000E4EAB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0C2BE6F2B4000E4EAB /* FirstViewController.swift */; };
@@ -47,6 +49,8 @@
 /* Begin PBXFileReference section */
 		031B56ABA3AC0215564C2C56 /* Pods-DemoAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoAppTests.release.xcconfig"; path = "Target Support Files/Pods-DemoAppTests/Pods-DemoAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		205789CF2BEBEF1800DEA100 /* FirstViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewModel.swift; sourceTree = "<group>"; };
+		207C720A2BEE6809009F1279 /* FirstViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewState.swift; sourceTree = "<group>"; };
+		207C720D2BEE6942009F1279 /* SuperHeroCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHeroCharacter.swift; sourceTree = "<group>"; };
 		20C9DF052BE6F2B4000E4EAB /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		207C720C2BEE6923009F1279 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				207C720D2BEE6942009F1279 /* SuperHeroCharacter.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		20C9DEFC2BE6F2B3000E4EAB = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +143,6 @@
 				20E093F92BED29AC00345150 /* Coordinator */,
 				20E093F82BED25F800345150 /* Data */,
 				20C9DF442BE99BCE000E4EAB /* Modules */,
-				20C9DF422BE99AE7000E4EAB /* Model */,
 				20C9DF382BE6F333000E4EAB /* Core */,
 				20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */,
 				20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */,
@@ -163,6 +174,7 @@
 		20C9DF382BE6F333000E4EAB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				207C720C2BEE6923009F1279 /* Entity */,
 				20C9DF392BE6F395000E4EAB /* Network */,
 			);
 			path = Core;
@@ -179,13 +191,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		20C9DF422BE99AE7000E4EAB /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		20C9DF442BE99BCE000E4EAB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +204,7 @@
 			children = (
 				20C9DF0C2BE6F2B4000E4EAB /* FirstViewController.swift */,
 				205789CF2BEBEF1800DEA100 /* FirstViewModel.swift */,
+				207C720A2BEE6809009F1279 /* FirstViewState.swift */,
 			);
 			path = FirstScreen;
 			sourceTree = "<group>";
@@ -465,9 +471,11 @@
 				20C9DF0D2BE6F2B4000E4EAB /* FirstViewController.swift in Sources */,
 				20C9DF412BE6F8AD000E4EAB /* APIClientURLSession.swift in Sources */,
 				20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */,
+				207C720E2BEE6942009F1279 /* SuperHeroCharacter.swift in Sources */,
 				20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */,
 				20C9DF3F2BE6F856000E4EAB /* APIClient.swift in Sources */,
 				20E093FB2BED29B700345150 /* AppCoordinator.swift in Sources */,
+				207C720B2BEE6809009F1279 /* FirstViewState.swift in Sources */,
 				205789D02BEBEF1800DEA100 /* FirstViewModel.swift in Sources */,
 				20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */,
 			);
