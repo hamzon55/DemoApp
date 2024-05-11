@@ -10,15 +10,8 @@ import Combine
 
 // MARK: - UseCase
 
+
+// Create the Protocole And Specify the task to solve
 protocol HeroUseCase {
-    func getHeroes() -> AnyPublisher<[SuperHeroCharacter], Error>
+    func getHeroes() -> AnyPublisher<[SuperHero], Error>
 }
-
-final class DefaultCharacterUseCase {
-    private let gateway: HeroGateway
-
-    init(gateway: HeroGateway) {
-        self.gateway = gateway
-    }
-}
-

@@ -12,7 +12,7 @@ class AppCoordinator {
     
      let window: UIWindow
      let navigationController: UINavigationController
-     var firstViewController: FirstViewController?
+     var firstViewController: HeroViewController?
     
     init(window: UIWindow) {
         self.window = window
@@ -22,7 +22,7 @@ class AppCoordinator {
     }
     
     func start() {
-        let firstViewController = FirstViewController()
+        let firstViewController = HeroViewController()
         firstViewController.coordinator = self
         navigationController.pushViewController(firstViewController, animated: false)
         self.firstViewController = firstViewController
