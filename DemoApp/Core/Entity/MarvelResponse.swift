@@ -10,6 +10,4 @@ struct HeroClass: Codable {
     enum CodingKeys :  String, CodingKey {
         case results = "results"
      }
-    
 }
-

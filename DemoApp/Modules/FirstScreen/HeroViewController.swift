@@ -45,8 +45,6 @@ class HeroViewController: UIViewController {
         ])
     }
     
-    
-    
     private func bindViewModel() {
         
       //  let input = HeroViewModelInput(appear: appear.eraseToAnyPublisher(),

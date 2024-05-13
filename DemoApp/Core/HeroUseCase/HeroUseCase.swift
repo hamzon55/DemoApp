@@ -8,11 +8,10 @@ protocol HeroUseCase {
     func getHeroes()  -> AnyPublisher<MarvelResponse, Error>
 }
 
-
 final class DefaultHeroUseCase: HeroUseCase {
     
     private var apiClient =  URLSessionAPIClient<HeroeEndpoint>()
-
+    
     init(apiClient:  URLSessionAPIClient<HeroeEndpoint>) {
         self.apiClient = apiClient
     }
@@ -20,7 +19,6 @@ final class DefaultHeroUseCase: HeroUseCase {
     func getHeroes()-> AnyPublisher<MarvelResponse, Error> {
         
         return apiClient.request(.getHeroes)
-            
+        
     }
-
 }
