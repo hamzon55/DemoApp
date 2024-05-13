@@ -6,7 +6,7 @@ enum HeroeEndpoint: APIEndpoint {
     case getHeroes
     
     var baseURL: URL {
-        return URL(string: "https://example.com/api")!
+        return MarvelConstants.baseUrl
     }
     
     var path: String {

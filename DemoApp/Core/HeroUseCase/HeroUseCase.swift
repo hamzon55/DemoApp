@@ -12,14 +12,19 @@ import Combine
 
 // Create the Protocole And Specify the task to solve
 protocol HeroUseCase {
-    func getHeroes() -> AnyPublisher<[SuperHero], Error>
+    func getHeroes()  -> AnyPublisher<[SuperHero], Error>
 }
 
 
 final class DefaultHeroUseCase: HeroUseCase {
-    let apiClient =  URLSessionAPIClient<HeroeEndpoint>()
+    
+    private var apiClient =  URLSessionAPIClient<HeroeEndpoint>()
 
-    func getHeroes() -> AnyPublisher<[SuperHero], Error> {
+    init(apiClient:  URLSessionAPIClient<HeroeEndpoint>) {
+        self.apiClient = apiClient
+    }
+    
+    func getHeroes()-> AnyPublisher<[SuperHero], Error> {
         
         return apiClient.request(.getHeroes)
         
