@@ -3,9 +3,13 @@ import UIKit
 import Combine
 
 class HeroViewController: UIViewController {
+  
     private var tableView: UITableView!
+    private let appear = PassthroughSubject<Void, Never>()
+    private let selection = PassthroughSubject<Int, Never>()
 
-    private var viewModel = HeroViewModel()
+    private var viewModel = HeroViewModel(heroService: DefaultHeroUseCase(apiClient: URLSessionAPIClient<HeroeEndpoint>()))
+    
     var coordinator: MainCoordinator?
     private var cancellables = Set<AnyCancellable>()
     
@@ -13,7 +17,11 @@ class HeroViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         bindViewModel()
-        viewModel.fetchItemsPublisher.send()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        appear.send()
     }
     
     private func setupTableView() {
@@ -37,23 +45,28 @@ class HeroViewController: UIViewController {
         ])
     }
     
+    
+    
     private func bindViewModel() {
+        
+      //  let input = HeroViewModelInput(appear: appear.eraseToAnyPublisher(),
+      //                                 selection: selection.eraseToAnyPublisher())
         viewModel.$state
             .sink { [weak self] state in
                 self?.handleState(state)
             }
-            .store(in: &cancellables)
+            .store(in: &cancellables) 
+        
+            viewModel.getCharacters()
     }
     
     private func handleState(_ state: HeroViewState) {
         switch state {
         case .idle:
-            // Handle idle state
-            break
+            tableView.backgroundColor = .red
         case .loading:
-            // Handle loading state
-            break
-        case .loaded(_):
+            tableView.backgroundColor = .yellow
+        case .success(_):
             tableView.reloadData()
             
         }

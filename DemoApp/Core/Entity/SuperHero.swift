@@ -1,13 +1,10 @@
-//
-//  SuperHeroCharacter.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 10/5/24.
-//
 
-import Foundation
-
-struct SuperHero: Codable {
+/// Represents a single Marvel Series.
+public struct Character: Codable, Equatable {
     
-    let name: String
+  public let name: String
+
+  public init(name: String) {
+    self.name = name
+  }
 }

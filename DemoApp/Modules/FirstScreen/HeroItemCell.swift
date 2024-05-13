@@ -37,7 +37,7 @@ class HeroItemCell: UITableViewCell {
         ])
     }
     
-    func configure(with item: SuperHero) {
+    func configure(with item: Character) {
         // Configure cell with item data
         nameLabel.text = item.name
     }

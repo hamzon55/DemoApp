@@ -1,16 +1,29 @@
 import Foundation
 import Combine
 
+
 class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
     
-    func request<T: Decodable>(_ endpoint: EndpointType) -> AnyPublisher<T, Error> {
+    
+    private let session: URLSession
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+    
+    
+    func request<T>(_ endpoint: EndpointType) -> AnyPublisher<T, any Error> where T : Decodable {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
-        var request = URLRequest(url: url)
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        components?.queryItems = endpoint.parameters?.map { key, value in
+            URLQueryItem(name: key, value: String(describing: value))
+        }
+        var request = URLRequest(url: components?.url ?? url)
         request.httpMethod = endpoint.method.rawValue
         
         endpoint.headers?.forEach { request.addValue($0.value, forHTTPHeaderField: $0.key) }
-            
-        return URLSession.shared.dataTaskPublisher(for: request)
+        
+        return session.dataTaskPublisher(for: request)
             .subscribe(on: DispatchQueue.global(qos: .background))
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse,
@@ -19,7 +32,14 @@ class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
                 }
                 return data
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .tryMap { data -> T in
+                do {
+                    return try JSONDecoder().decode(T.self, from: data)
+                } catch {
+                    print(error)
+                    throw APIError.networkError(error)
+                }
+            }
             .eraseToAnyPublisher()
     }
 }

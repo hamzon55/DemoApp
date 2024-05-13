@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 10/5/24.
-//
-
 import Foundation
 import Combine
 
@@ -12,7 +5,7 @@ import Combine
 
 // Create the Protocole And Specify the task to solve
 protocol HeroUseCase {
-    func getHeroes()  -> AnyPublisher<[SuperHero], Error>
+    func getHeroes()  -> AnyPublisher<MarvelResponse, Error>
 }
 
 
@@ -24,10 +17,10 @@ final class DefaultHeroUseCase: HeroUseCase {
         self.apiClient = apiClient
     }
     
-    func getHeroes()-> AnyPublisher<[SuperHero], Error> {
+    func getHeroes()-> AnyPublisher<MarvelResponse, Error> {
         
         return apiClient.request(.getHeroes)
-        
+            
     }
 
 }

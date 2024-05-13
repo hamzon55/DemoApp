@@ -22,5 +22,6 @@ enum HTTPMethod: String {
 enum APIError: Error {
     case invalidResponse
     case invalidData
+    case networkError(Error)
 }
 

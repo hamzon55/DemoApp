@@ -12,7 +12,7 @@ enum HeroeEndpoint: APIEndpoint {
     var path: String {
         switch self {
         case .getHeroes:
-            return "/users"
+            return MarvelConstants.characterPath
         }
     }
     
@@ -26,14 +26,17 @@ enum HeroeEndpoint: APIEndpoint {
     var headers: [String: String]? {
         switch self {
         case .getHeroes:
-            return ["Authorization": "Bearer TOKEN"]
+            return ["Content-Type": "application/json"]
         }
     }
     
     var parameters: [String: Any]? {
         switch self {
         case .getHeroes:
-            return ["page": 1, "limit": 10]
+            return ["ts": MarvelConstants.timestamp,
+                    "apikey": MarvelConstants.apiKey,
+                    "hash": MarvelConstants.hash
+            ]
         }
     }
 }
