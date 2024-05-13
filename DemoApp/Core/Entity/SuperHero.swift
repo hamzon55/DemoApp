@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SuperHero {
+struct SuperHero: Codable {
     
     let name: String
 }

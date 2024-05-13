@@ -6,7 +6,7 @@ class HeroViewController: UIViewController {
     private var tableView: UITableView!
 
     private var viewModel = HeroViewModel()
-    var coordinator: AppCoordinator?
+    var coordinator: MainCoordinator?
     private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {

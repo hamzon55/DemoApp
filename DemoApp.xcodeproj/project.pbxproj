@@ -11,9 +11,11 @@
 		205789D02BEBEF1800DEA100 /* HeroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205789CF2BEBEF1800DEA100 /* HeroViewModel.swift */; };
 		207C720B2BEE6809009F1279 /* HeroViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C720A2BEE6809009F1279 /* HeroViewState.swift */; };
 		207C720E2BEE6942009F1279 /* SuperHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C720D2BEE6942009F1279 /* SuperHero.swift */; };
-		207C72232BEEB5F7009F1279 /* HeroGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72222BEEB5F7009F1279 /* HeroGateway.swift */; };
 		207C72262BEEC9D0009F1279 /* HeroUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72252BEEC9D0009F1279 /* HeroUseCase.swift */; };
 		207C72282BEFFB01009F1279 /* HeroItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72272BEFFB01009F1279 /* HeroItemCell.swift */; };
+		207C722E2BF21CCE009F1279 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C722D2BF21CCE009F1279 /* MainCoordinator.swift */; };
+		207C72312BF21E82009F1279 /* MarvelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72302BF21E82009F1279 /* MarvelConstants.swift */; };
+		207C72342BF220E7009F1279 /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72332BF220E7009F1279 /* String+md5.swift */; };
 		20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */; };
 		20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */; };
 		20C9DF0D2BE6F2B4000E4EAB /* HeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0C2BE6F2B4000E4EAB /* HeroViewController.swift */; };
@@ -27,7 +29,7 @@
 		20C9DF3F2BE6F856000E4EAB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3E2BE6F856000E4EAB /* APIClient.swift */; };
 		20C9DF412BE6F8AD000E4EAB /* APIClientURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF402BE6F8AD000E4EAB /* APIClientURLSession.swift */; };
 		20E093FB2BED29B700345150 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E093FA2BED29B700345150 /* AppCoordinator.swift */; };
-		20E093FD2BED854C00345150 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E093FC2BED854C00345150 /* AppCoordinatorTests.swift */; };
+		20E093FD2BED854C00345150 /* MainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E093FC2BED854C00345150 /* MainCoordinatorTests.swift */; };
 		8B4536503405D17F4F85F75E /* Pods_DemoAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47CD431479C4982EB2AF5298 /* Pods_DemoAppTests.framework */; };
 		A78B2AFB0E308C806050B7B5 /* Pods_DemoApp_DemoAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE07415ACFB7CD23B47F9D2C /* Pods_DemoApp_DemoAppUITests.framework */; };
 /* End PBXBuildFile section */
@@ -54,9 +56,11 @@
 		205789CF2BEBEF1800DEA100 /* HeroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewModel.swift; sourceTree = "<group>"; };
 		207C720A2BEE6809009F1279 /* HeroViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewState.swift; sourceTree = "<group>"; };
 		207C720D2BEE6942009F1279 /* SuperHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHero.swift; sourceTree = "<group>"; };
-		207C72222BEEB5F7009F1279 /* HeroGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroGateway.swift; sourceTree = "<group>"; };
 		207C72252BEEC9D0009F1279 /* HeroUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCase.swift; sourceTree = "<group>"; };
 		207C72272BEFFB01009F1279 /* HeroItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroItemCell.swift; sourceTree = "<group>"; };
+		207C722D2BF21CCE009F1279 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		207C72302BF21E82009F1279 /* MarvelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelConstants.swift; sourceTree = "<group>"; };
+		207C72332BF220E7009F1279 /* String+md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
 		20C9DF052BE6F2B4000E4EAB /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +78,7 @@
 		20C9DF3E2BE6F856000E4EAB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		20C9DF402BE6F8AD000E4EAB /* APIClientURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientURLSession.swift; sourceTree = "<group>"; };
 		20E093FA2BED29B700345150 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		20E093FC2BED854C00345150 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
+		20E093FC2BED854C00345150 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
 		47CD431479C4982EB2AF5298 /* Pods_DemoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75EDF899EAC498DF0EA5AD2C /* Pods-DemoApp-DemoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp-DemoAppUITests.release.xcconfig"; path = "Target Support Files/Pods-DemoApp-DemoAppUITests/Pods-DemoApp-DemoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9E2AE9C74236011E12B8AB04 /* Pods-DemoAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoAppTests/Pods-DemoAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,20 +125,37 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		207C72212BEEB5D0009F1279 /* Gatways */ = {
-			isa = PBXGroup;
-			children = (
-				207C72222BEEB5F7009F1279 /* HeroGateway.swift */,
-			);
-			path = Gatways;
-			sourceTree = "<group>";
-		};
 		207C72242BEEC998009F1279 /* HeroUseCase */ = {
 			isa = PBXGroup;
 			children = (
 				207C72252BEEC9D0009F1279 /* HeroUseCase.swift */,
 			);
 			path = HeroUseCase;
+			sourceTree = "<group>";
+		};
+		207C722C2BF21C82009F1279 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				20E093F92BED29AC00345150 /* Coordinator */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		207C722F2BF21E64009F1279 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				207C72322BF220CC009F1279 /* Extensions */,
+				207C72302BF21E82009F1279 /* MarvelConstants.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		207C72322BF220CC009F1279 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				207C72332BF220E7009F1279 /* String+md5.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		20C9DEFC2BE6F2B3000E4EAB = {
@@ -162,7 +183,8 @@
 		20C9DF072BE6F2B4000E4EAB /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				20E093F92BED29AC00345150 /* Coordinator */,
+				207C722F2BF21E64009F1279 /* Commons */,
+				207C722C2BF21C82009F1279 /* Application */,
 				20C9DF442BE99BCE000E4EAB /* Modules */,
 				20C9DF382BE6F333000E4EAB /* Core */,
 				20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */,
@@ -178,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				20C9DF1F2BE6F2B5000E4EAB /* DemoAppTests.swift */,
-				20E093FC2BED854C00345150 /* AppCoordinatorTests.swift */,
+				20E093FC2BED854C00345150 /* MainCoordinatorTests.swift */,
 			);
 			path = DemoAppTests;
 			sourceTree = "<group>";
@@ -196,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				207C72242BEEC998009F1279 /* HeroUseCase */,
-				207C72212BEEB5D0009F1279 /* Gatways */,
 				207C720C2BEE6923009F1279 /* Entity */,
 				20C9DF392BE6F395000E4EAB /* Network */,
 			);
@@ -237,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				20E093FA2BED29B700345150 /* AppCoordinator.swift */,
+				207C722D2BF21CCE009F1279 /* MainCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -275,6 +297,7 @@
 				20C9DF012BE6F2B4000E4EAB /* Sources */,
 				20C9DF022BE6F2B4000E4EAB /* Frameworks */,
 				20C9DF032BE6F2B4000E4EAB /* Resources */,
+				207C72352BF2225E009F1279 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -416,6 +439,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		207C72352BF2225E009F1279 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		3FB4B9523552CDBB28AE9EB6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -487,9 +527,10 @@
 				20C9DF3D2BE6F725000E4EAB /* DemoEndpoint.swift in Sources */,
 				20C9DF0D2BE6F2B4000E4EAB /* HeroViewController.swift in Sources */,
 				20C9DF412BE6F8AD000E4EAB /* APIClientURLSession.swift in Sources */,
+				207C72342BF220E7009F1279 /* String+md5.swift in Sources */,
 				20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */,
 				207C720E2BEE6942009F1279 /* SuperHero.swift in Sources */,
-				207C72232BEEB5F7009F1279 /* HeroGateway.swift in Sources */,
+				207C72312BF21E82009F1279 /* MarvelConstants.swift in Sources */,
 				207C72282BEFFB01009F1279 /* HeroItemCell.swift in Sources */,
 				20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */,
 				20C9DF3F2BE6F856000E4EAB /* APIClient.swift in Sources */,
@@ -497,6 +538,7 @@
 				207C720B2BEE6809009F1279 /* HeroViewState.swift in Sources */,
 				207C72262BEEC9D0009F1279 /* HeroUseCase.swift in Sources */,
 				205789D02BEBEF1800DEA100 /* HeroViewModel.swift in Sources */,
+				207C722E2BF21CCE009F1279 /* MainCoordinator.swift in Sources */,
 				20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,7 +547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E093FD2BED854C00345150 /* AppCoordinatorTests.swift in Sources */,
+				20E093FD2BED854C00345150 /* MainCoordinatorTests.swift in Sources */,
 				20C9DF202BE6F2B5000E4EAB /* DemoAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -2,6 +2,7 @@
 import Foundation
 
 enum HeroeEndpoint: APIEndpoint {
+    
     case getHeroes
     
     var baseURL: URL {
