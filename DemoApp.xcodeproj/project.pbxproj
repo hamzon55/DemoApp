@@ -17,6 +17,7 @@
 		207C72312BF21E82009F1279 /* MarvelConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72302BF21E82009F1279 /* MarvelConstants.swift */; };
 		207C72342BF220E7009F1279 /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72332BF220E7009F1279 /* String+md5.swift */; };
 		207C72372BF25C75009F1279 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72362BF25C75009F1279 /* MarvelResponse.swift */; };
+		207C723B2BF3B62B009F1279 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C723A2BF3B62B009F1279 /* Thumbnail.swift */; };
 		20C9DF092BE6F2B4000E4EAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */; };
 		20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */; };
 		20C9DF0D2BE6F2B4000E4EAB /* HeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0C2BE6F2B4000E4EAB /* HeroViewController.swift */; };
@@ -63,6 +64,7 @@
 		207C72302BF21E82009F1279 /* MarvelConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelConstants.swift; sourceTree = "<group>"; };
 		207C72332BF220E7009F1279 /* String+md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
 		207C72362BF25C75009F1279 /* MarvelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelResponse.swift; sourceTree = "<group>"; };
+		207C723A2BF3B62B009F1279 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		20C9DF052BE6F2B4000E4EAB /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C9DF082BE6F2B4000E4EAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C9DF0A2BE6F2B4000E4EAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				207C720D2BEE6942009F1279 /* SuperHero.swift */,
 				207C72362BF25C75009F1279 /* MarvelResponse.swift */,
+				207C723A2BF3B62B009F1279 /* Thumbnail.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -241,12 +244,12 @@
 		20C9DF442BE99BCE000E4EAB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				20C9DF452BE99BD4000E4EAB /* FirstScreen */,
+				20C9DF452BE99BD4000E4EAB /* HeroView */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		20C9DF452BE99BD4000E4EAB /* FirstScreen */ = {
+		20C9DF452BE99BD4000E4EAB /* HeroView */ = {
 			isa = PBXGroup;
 			children = (
 				20C9DF0C2BE6F2B4000E4EAB /* HeroViewController.swift */,
@@ -254,7 +257,7 @@
 				207C720A2BEE6809009F1279 /* HeroViewState.swift */,
 				207C72272BEFFB01009F1279 /* HeroItemCell.swift */,
 			);
-			path = FirstScreen;
+			path = HeroView;
 			sourceTree = "<group>";
 		};
 		20E093F92BED29AC00345150 /* Coordinator */ = {
@@ -528,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20C9DF3D2BE6F725000E4EAB /* HeroeEndpoint.swift in Sources */,
+				207C723B2BF3B62B009F1279 /* Thumbnail.swift in Sources */,
 				20C9DF0D2BE6F2B4000E4EAB /* HeroViewController.swift in Sources */,
 				20C9DF412BE6F8AD000E4EAB /* APIClientURLSession.swift in Sources */,
 				207C72342BF220E7009F1279 /* String+md5.swift in Sources */,

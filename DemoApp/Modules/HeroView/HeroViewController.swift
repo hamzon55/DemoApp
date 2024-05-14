@@ -61,9 +61,9 @@ class HeroViewController: UIViewController {
     private func handleState(_ state: HeroViewState) {
         switch state {
         case .idle:
-            tableView.backgroundColor = .red
+            break
         case .loading:
-            tableView.backgroundColor = .yellow
+            break
         case .success(_):
             tableView.reloadData()
             
@@ -91,6 +91,4 @@ extension HeroViewController: UITableViewDelegate {
         // Handle selection
         print("Selected item: \(selectedItem)")
     }
-    
-    // You can implement other UITableViewDelegate methods here as needed
 }
