@@ -13,7 +13,6 @@ class HeroItemCell: UITableViewCell {
     let nameLabel = UILabel()
     let characterImageView = UIImageView()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -33,28 +32,29 @@ class HeroItemCell: UITableViewCell {
     }
     
     private func setupViews() {
-        // Customize cell appearance
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(nameLabel)
         
-        characterImageView.contentMode = .scaleAspectFit
-        characterImageView.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 18) // Increase font size
+        nameLabel.textColor = UIColor.black
+        
+        characterImageView.contentMode = .scaleAspectFill
+        characterImageView.clipsToBounds = true
+        characterImageView.layer.borderWidth = 2
+        characterImageView.layer.borderColor = UIColor.white.cgColor
         
         contentView.addSubview(nameLabel)
         contentView.addSubview(characterImageView)
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(10)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-10)
         }
+        
         characterImageView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.bottom.equalToSuperview().offset(-8)
-            make.height.equalTo(100)
+            make.height.width.equalTo(150)
+            make.bottom.lessThanOrEqualToSuperview().offset(-16)
         }
     }
     

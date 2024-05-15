@@ -2,15 +2,17 @@ import Foundation
 import Combine
 
 
+protocol APIClientProtocl {
+    func request<T>(_ endpoint: APIEndpoint) -> AnyPublisher<T, APIError> where T: Decodable
+}
+
 class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
-    
     
     private let session: URLSession
     
     init(session: URLSession = .shared) {
         self.session = session
     }
-    
     
     func request<T>(_ endpoint: EndpointType) -> AnyPublisher<T, any Error> where T : Decodable {
         let url = endpoint.baseURL.appendingPathComponent(endpoint.path)
