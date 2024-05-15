@@ -11,6 +11,7 @@ import SnapKit
 class HeroItemCell: UITableViewCell {
     
     let nameLabel = UILabel()
+    let descriptionLabel = UILabel()
     let characterImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,15 +34,20 @@ class HeroItemCell: UITableViewCell {
     
     private func setupViews() {
         
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 18) // Increase font size
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 18) 
         nameLabel.textColor = UIColor.black
         
+        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        descriptionLabel.textColor = UIColor.gray
+        descriptionLabel.numberOfLines = 5
+
         characterImageView.contentMode = .scaleAspectFill
         characterImageView.clipsToBounds = true
         characterImageView.layer.borderWidth = 2
         characterImageView.layer.borderColor = UIColor.white.cgColor
         
         contentView.addSubview(nameLabel)
+        contentView.addSubview(descriptionLabel)
         contentView.addSubview(characterImageView)
         
         nameLabel.snp.makeConstraints { make in
@@ -56,10 +62,17 @@ class HeroItemCell: UITableViewCell {
             make.height.width.equalTo(150)
             make.bottom.lessThanOrEqualToSuperview().offset(-16)
         }
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(4)
+            make.leading.equalTo(characterImageView.snp.trailing).offset(12)
+            make.trailing.lessThanOrEqualToSuperview().offset(-18)
+        }
     }
     
     func configure(with item: Character) {
         nameLabel.text = item.name
+        descriptionLabel.text = item.description
         characterImageView.download(image: item.thumbnail.url)
     }
 }
