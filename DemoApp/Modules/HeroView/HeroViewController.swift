@@ -7,11 +7,19 @@ class HeroViewController: UIViewController {
     private var tableView: UITableView!
     private let appear = PassthroughSubject<Void, Never>()
     private let selection = PassthroughSubject<Int, Never>()
-
+    private let search = PassthroughSubject<String, Never>()
     private var viewModel = HeroViewModel(heroService: DefaultHeroUseCase(apiClient: URLSessionAPIClient<HeroeEndpoint>()))
-    
     var coordinator: MainCoordinator?
     private var cancellables = Set<AnyCancellable>()
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.definesPresentationContext = true
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.delegate = self
+        return searchController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +29,24 @@ class HeroViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        configureUI()
         appear.send()
     }
     
+    private func configureUI() {
+        definesPresentationContext = true
+        navigationItem.searchController = self.searchController
+        searchController.isActive = true
+
+    }
+    
     private func setupTableView() {
-        // Initialize UITableView
+        
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
-        
-        // Register custom cell class
-        tableView.register(HeroItemCell.self, forCellReuseIdentifier: "HeroItemCell")
-        
-        // Add UITableView as subview
+        tableView.register(HeroItemCell.self,
+                           forCellReuseIdentifier: HeroItemCell.cellID)
         view.addSubview(tableView)
         
         // Define auto layout constraints
@@ -88,7 +101,20 @@ extension HeroViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedItem = viewModel.items[indexPath.row]
-        // Handle selection
         print("Selected item: \(selectedItem)")
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchController.searchBar.resignFirstResponder()
+    }
+}
+// MARK: - Search Delegate
+
+extension HeroViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        search.send(searchText)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        search.send("")
     }
 }

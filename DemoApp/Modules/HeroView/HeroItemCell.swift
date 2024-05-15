@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class HeroItemCell: UITableViewCell {
+    static let cellID = "HeroItemCell"
+
     
     let nameLabel = UILabel()
     let descriptionLabel = UILabel()
