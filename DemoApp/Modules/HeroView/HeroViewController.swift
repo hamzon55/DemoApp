@@ -79,7 +79,8 @@ class HeroViewController: UIViewController {
             break
         case .success(_):
             tableView.reloadData()
-            
+        case .failure(_):
+            break
         }
     }
 }

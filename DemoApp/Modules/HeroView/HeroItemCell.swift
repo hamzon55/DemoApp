@@ -1,24 +1,15 @@
-//
-//  HeroItemCell.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 11/5/24.
-//
-
 import UIKit
 import SnapKit
 
 class HeroItemCell: UITableViewCell {
     static let cellID = "HeroItemCell"
 
-    
     let nameLabel = UILabel()
     let descriptionLabel = UILabel()
     let characterImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupViews()
     }
     

@@ -13,12 +13,15 @@ import UIKit
 typealias HeroViewModelOuput = AnyPublisher<HeroViewState, Never>
 
 struct HeroViewModelInput {
-    // called when a screen becomes visible
     let appear: AnyPublisher<Void, Never>
-
-    // called when a user selected an item from the list
     let selection: AnyPublisher<Int, Never>
 }
+
+
+protocol HeroesViewModelType {
+    func transform(input: HeroViewModelInput) -> HeroViewModelOuput
+}
+
 
 class HeroViewModel {
     
