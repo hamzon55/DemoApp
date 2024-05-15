@@ -1,3 +1,5 @@
+import Foundation
+
 struct Thumbnail: Codable, Equatable {
     
     let path: String
@@ -6,6 +8,9 @@ struct Thumbnail: Codable, Equatable {
     var fullPath: String {
         return "\(path).\(thumbnailExtension)"
     }
+    
+    var url: URL? { URL(string: "\(path).\(thumbnailExtension)") }
+
     
     enum CodingKeys: String, CodingKey {
         case path
