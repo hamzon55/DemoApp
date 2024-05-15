@@ -1,9 +1,10 @@
 
 import UIKit
 import Combine
+import SVProgressHUD
 
 class HeroViewController: UIViewController {
-  
+    
     private var tableView: UITableView!
     private let appear = PassthroughSubject<Void, Never>()
     private let selection = PassthroughSubject<Int, Never>()
@@ -37,7 +38,7 @@ class HeroViewController: UIViewController {
         definesPresentationContext = true
         navigationItem.searchController = self.searchController
         searchController.isActive = true
-
+        
     }
     
     private func setupTableView() {
@@ -60,27 +61,33 @@ class HeroViewController: UIViewController {
     
     private func bindViewModel() {
         
-      //  let input = HeroViewModelInput(appear: appear.eraseToAnyPublisher(),
-      //                                 selection: selection.eraseToAnyPublisher())
-        viewModel.$state
-            .sink { [weak self] state in
-                self?.handleState(state)
-            }
-            .store(in: &cancellables) 
+        let input = HeroViewModelInput(
+            appear: appear.eraseToAnyPublisher(),
+            selection: Publishers.Sequence<[Int], Never>(sequence: []).eraseToAnyPublisher()
+        )
+        let output = viewModel.transform(input: input)
+        output.sink(receiveValue: { [weak self] state in
+            self?.updateUI(state)
+        })
+        .store(in: &cancellables)
         
-            viewModel.getCharacters()
     }
     
-    private func handleState(_ state: HeroViewState) {
-        switch state {
-        case .idle:
-            break
-        case .loading:
-            break
-        case .success(_):
-            tableView.reloadData()
-        case .failure(_):
-            break
+    private func updateUI(_ state: HeroViewState) {
+        DispatchQueue.main.async {
+            switch state {
+            case .idle:
+                print("Idle")
+                SVProgressHUD.show()
+            case .loading:
+                break
+            case .success(let heroes):
+                SVProgressHUD.dismiss()
+                self.viewModel.items = heroes
+                self.tableView.reloadData()
+            case .failure(_):
+                break
+            }
         }
     }
 }
@@ -114,7 +121,7 @@ extension HeroViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         search.send(searchText)
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         search.send("")
     }

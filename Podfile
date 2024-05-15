@@ -7,6 +7,7 @@ target 'DemoApp' do
   pod 'SwiftLint'
   pod 'SnapKit', '~> 5.0.0'
   pod 'Kingfisher'
+  pod 'SVProgressHUD'
   # Pods for DemoApp
   
 

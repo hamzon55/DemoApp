@@ -18,7 +18,9 @@ final class DefaultHeroUseCase: HeroUseCase {
     
     func getHeroes()-> AnyPublisher<MarvelResponse, Error> {
         
-        return apiClient.request(.getHeroes)
-        
+        return apiClient.request(HeroeEndpoint.getHeroes).mapError { error -> Error in
+            return APIError.invalidResponse
+        }
+        .eraseToAnyPublisher()
     }
 }

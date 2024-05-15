@@ -17,37 +17,49 @@ struct HeroViewModelInput {
     let selection: AnyPublisher<Int, Never>
 }
 
-
 protocol HeroesViewModelType {
     func transform(input: HeroViewModelInput) -> HeroViewModelOuput
 }
 
-
 class HeroViewModel {
     
-    // Input
     var fetchItemsPublisher = PassthroughSubject<Void, Never>()
     
     // Output
     @Published var state: HeroViewState = .idle
     @Published var items: [Character] = []
     let heroService: HeroUseCase
-
+    
     private var cancellables = Set<AnyCancellable>()
     
     init(heroService: HeroUseCase) {
-           self.heroService = heroService
+        self.heroService = heroService
     }
     
-     func getCharacters() {
-        state = .loading
-            heroService.getHeroes()
-                   .receive(on: RunLoop.main)
-                   .sink(receiveCompletion: { data in
-                   
-               }, receiveValue: {[weak self] data in
-                   self?.items = data.data.results
-                   self?.state = .success(data.data.results)
-               }).store(in: &cancellables)
-    }
+    func transform(input: HeroViewModelInput) -> HeroViewModelOuput {
+            let fetchItemsTrigger = input.appear
+                .merge(with: input.selection.map { _ in () })
+                .eraseToAnyPublisher()
+            
+            let statePublisher = fetchItemsTrigger
+                .flatMap { [weak self] _ -> AnyPublisher<HeroViewState, Never> in
+                    guard let self = self else {
+                        return Empty<HeroViewState, Never>().eraseToAnyPublisher()
+                    }
+                    
+                    return self.heroService.getHeroes()
+                        .map { characters in
+                            self.items = characters.data.results
+                            return .success(characters.data.results)
+                        }
+                        .catch { error -> Just<HeroViewState> in
+                            return Just(.failure(error))
+                        }
+                        .prepend(.loading)
+                        .eraseToAnyPublisher()
+                }
+                .eraseToAnyPublisher()
+            
+            return statePublisher
+        }
 }
