@@ -11,21 +11,10 @@ import UIKit
 
 typealias HeroViewModelOuput = AnyPublisher<HeroViewState, Never>
 
-struct HeroViewModelInput {
-    let appear: AnyPublisher<Void, Never>
-    let selection: AnyPublisher<Int, Never>
-}
-
-protocol HeroesViewModelType {
-    func transform(input: HeroViewModelInput) -> HeroViewModelOuput
-}
-
 class HeroViewModel: HeroesViewModelType {
-    @Published var state: HeroViewState = .idle
+    @Published private(set) var state: HeroViewState = .idle
     @Published var items: [Character] = []
     private var cancellables = Set<AnyCancellable>()
-    
-    var fetchItemsPublisher = PassthroughSubject<Void, Never>()
     let heroUseCase: HeroUseCase
 
     init(heroUseCase: HeroUseCase) {
@@ -52,6 +41,7 @@ class HeroViewModel: HeroesViewModelType {
     private func fetchaData() -> AnyPublisher<HeroViewState, Never> {
         heroUseCase.getHeroes()
             .map { response in
+                self.items = response.data.results
                 return .success(response.data.results)
             }
             .catch { error -> Just<HeroViewState> in

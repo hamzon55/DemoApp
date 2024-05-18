@@ -1,3 +1,10 @@
+import Foundation
+import Combine
+
+protocol HeroesViewModelType: AnyObject {
+    func transform(input: HeroViewModelInput) -> HeroViewModelOuput
+}
+
 public enum HeroViewState {
     case idle
     case loading
@@ -15,4 +22,9 @@ extension HeroViewState: Equatable {
         default: return false
         }
     }
+}
+
+struct HeroViewModelInput {
+    let appear: AnyPublisher<Void, Never>
+    let selection: AnyPublisher<Int, Never>
 }

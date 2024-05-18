@@ -24,7 +24,6 @@ class HeroViewController: UIViewController {
         return searchController
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -41,13 +40,13 @@ class HeroViewController: UIViewController {
         definesPresentationContext = true
         navigationItem.searchController = self.searchController
         searchController.isActive = true
-        
     }
     
     private func setupTableView() {
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(HeroItemCell.self,
                            forCellReuseIdentifier: HeroItemCell.cellID)
         tableView.separatorStyle = .none

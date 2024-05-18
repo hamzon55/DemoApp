@@ -66,7 +66,7 @@ class HeroItemCell: UITableViewCell {
     
     func configure(with item: Character) {
         nameLabel.text = item.name
-        descriptionLabel.text = item.description
+        descriptionLabel.text = item.descriptionText
         characterImageView.download(image: item.thumbnail.url)
     }
 

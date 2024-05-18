@@ -1,4 +1,3 @@
-
 /// Represents a single Marvel Series.
 public struct Character: Codable, Equatable {
     
@@ -13,4 +12,8 @@ public struct Character: Codable, Equatable {
         self.description = description
         self.thumbnail = thumbnail
     }
+    
+    var descriptionText: String {
+        return description.isEmpty == false ? description : "Description not available."
+        }
 }
