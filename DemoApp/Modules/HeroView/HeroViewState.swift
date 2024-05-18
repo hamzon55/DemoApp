@@ -3,6 +3,7 @@ public enum HeroViewState {
     case loading
     case success([Character])
     case failure(Error)
+    case error(String)
 }
 
 extension HeroViewState: Equatable {

@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Combine
 
 class HeroItemCell: UITableViewCell {
     static let cellID = "HeroItemCell"
@@ -7,7 +8,8 @@ class HeroItemCell: UITableViewCell {
     let nameLabel = UILabel()
     let descriptionLabel = UILabel()
     let characterImageView = UIImageView()
-    
+    private var cancellable: AnyCancellable?
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -21,8 +23,7 @@ class HeroItemCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        characterImageView.image = nil
-        characterImageView.cancelDownloading()
+        cancelImageLoading()
     }
     
     private func setupViews() {
@@ -67,5 +68,10 @@ class HeroItemCell: UITableViewCell {
         nameLabel.text = item.name
         descriptionLabel.text = item.description
         characterImageView.download(image: item.thumbnail.url)
+    }
+
+    private func cancelImageLoading() {
+        characterImageView.image = nil
+        cancellable?.cancel()
     }
 }

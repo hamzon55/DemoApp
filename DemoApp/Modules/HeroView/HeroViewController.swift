@@ -2,16 +2,18 @@
 import UIKit
 import Combine
 import SVProgressHUD
+import SnapKit
 
 class HeroViewController: UIViewController {
     
-    private var tableView: UITableView!
     private let appear = PassthroughSubject<Void, Never>()
     private let selection = PassthroughSubject<Int, Never>()
     private let search = PassthroughSubject<String, Never>()
-    private var viewModel = HeroViewModel(heroService: DefaultHeroUseCase(apiClient: URLSessionAPIClient<HeroeEndpoint>()))
-    var coordinator: MainCoordinator?
+    
+    private var tableView: UITableView!
     private var cancellables = Set<AnyCancellable>()
+    private var viewModel = HeroViewModel(heroUseCase: DefaultHeroUseCase(apiClient: URLSessionAPIClient<HeroeEndpoint>()))
+    var coordinator: MainCoordinator?
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
@@ -21,6 +23,7 @@ class HeroViewController: UIViewController {
         searchController.searchBar.delegate = self
         return searchController
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,35 +45,35 @@ class HeroViewController: UIViewController {
     }
     
     private func setupTableView() {
-        
         tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.register(HeroItemCell.self,
                            forCellReuseIdentifier: HeroItemCell.cellID)
+        tableView.separatorStyle = .none
         view.addSubview(tableView)
         
-        // Define auto layout constraints
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        tableView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
     
     private func bindViewModel() {
-        
+        cancellables.forEach { $0.cancel()}
+        cancellables.removeAll()
         let input = HeroViewModelInput(
             appear: appear.eraseToAnyPublisher(),
-            selection: Publishers.Sequence<[Int], Never>(sequence: []).eraseToAnyPublisher()
-        )
+            selection: Publishers.Sequence<[Int], Never>(sequence: []).eraseToAnyPublisher())
+        
         let output = viewModel.transform(input: input)
+        
         output.sink(receiveValue: { [weak self] state in
             self?.updateUI(state)
         })
         .store(in: &cancellables)
-        
     }
     
     private func updateUI(_ state: HeroViewState) {
@@ -80,13 +83,16 @@ class HeroViewController: UIViewController {
                 print("Idle")
                 SVProgressHUD.show()
             case .loading:
-                break
+                SVProgressHUD.show()
             case .success(let heroes):
                 SVProgressHUD.dismiss()
                 self.viewModel.items = heroes
                 self.tableView.reloadData()
             case .failure(_):
-                break
+                SVProgressHUD.dismiss()
+            case .error(_):
+                SVProgressHUD.dismiss()
+
             }
         }
     }

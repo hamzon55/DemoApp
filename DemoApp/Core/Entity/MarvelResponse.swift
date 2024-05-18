@@ -1,9 +1,7 @@
-
 struct MarvelResponse: Codable {
     var data: HeroClass
     
     init(data: HeroClass) {
-        
         self.data = data
     }
 }
@@ -15,7 +13,6 @@ struct HeroClass: Codable {
     let total: Int
     let count: Int
     var results: [Character]
-    
     
     init(offset: Int, limit: Int, total: Int, count: Int, results: [Character]) {
         self.offset = offset
