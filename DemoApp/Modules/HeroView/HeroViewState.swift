@@ -27,4 +27,5 @@ extension HeroViewState: Equatable {
 struct HeroViewModelInput {
     let appear: AnyPublisher<Void, Never>
     let selection: AnyPublisher<Int, Never>
+    let search: AnyPublisher<String, Never>
 }

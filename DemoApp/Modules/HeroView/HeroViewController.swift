@@ -6,10 +6,10 @@ import SnapKit
 
 class HeroViewController: UIViewController {
     
-    private let appear = PassthroughSubject<Void, Never>()
-    private let selection = PassthroughSubject<Int, Never>()
-    private let search = PassthroughSubject<String, Never>()
-    
+    private let onAppearPublisher = PassthroughSubject<Void, Never>()
+    private let onSelectionPublisher = PassthroughSubject<Int, Never>()
+    private let onSearchPublisher = PassthroughSubject<String, Never>()
+
     private var tableView: UITableView!
     private var cancellables = Set<AnyCancellable>()
     private var viewModel = HeroViewModel(heroUseCase: DefaultHeroUseCase(apiClient: URLSessionAPIClient<HeroeEndpoint>()))
@@ -33,7 +33,7 @@ class HeroViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureUI()
-        appear.send()
+        onAppearPublisher.send()
     }
     
     private func configureUI() {
@@ -64,8 +64,9 @@ class HeroViewController: UIViewController {
         cancellables.forEach { $0.cancel()}
         cancellables.removeAll()
         let input = HeroViewModelInput(
-            appear: appear.eraseToAnyPublisher(),
-            selection: Publishers.Sequence<[Int], Never>(sequence: []).eraseToAnyPublisher())
+            appear: onAppearPublisher.eraseToAnyPublisher(),
+            selection: Publishers.Sequence<[Int], Never>(sequence: []).eraseToAnyPublisher(),
+            search: onSearchPublisher.eraseToAnyPublisher())
         
         let output = viewModel.transform(input: input)
         
@@ -124,10 +125,10 @@ extension HeroViewController: UITableViewDelegate {
 
 extension HeroViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        search.send(searchText)
+        onSearchPublisher.send(searchText)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        search.send("")
+        onSearchPublisher.send("")
     }
 }

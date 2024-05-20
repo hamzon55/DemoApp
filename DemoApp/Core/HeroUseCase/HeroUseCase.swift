@@ -5,7 +5,7 @@ import Combine
 
 // Create the Protocole And Specify the task to solve
 protocol HeroUseCase {
-    func getHeroes()  -> AnyPublisher<MarvelResponse, Error>
+    func getHeroes(query: String?)  -> AnyPublisher<MarvelResponse, Error>
 }
 
 final class DefaultHeroUseCase: HeroUseCase {
@@ -16,11 +16,11 @@ final class DefaultHeroUseCase: HeroUseCase {
         self.apiClient = apiClient
     }
     
-    func getHeroes()-> AnyPublisher<MarvelResponse, Error> {
+    func getHeroes(query: String?)  -> AnyPublisher<MarvelResponse, Error>{
 
-        return apiClient.request(HeroeEndpoint.getHeroes).mapError { error -> Error in
+        return apiClient.request(HeroeEndpoint.getHeroes(query: query)).mapError { error -> Error in
             return APIError.invalidResponse
         }
         .eraseToAnyPublisher()
-    }
+    }   
 }
