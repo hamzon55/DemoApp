@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20127E472BFC127B0041E3D5 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20127E462BFC127B0041E3D5 /* Spacing.swift */; };
 		205789D02BEBEF1800DEA100 /* HeroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205789CF2BEBEF1800DEA100 /* HeroViewModel.swift */; };
 		207C720B2BEE6809009F1279 /* HeroViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C720A2BEE6809009F1279 /* HeroViewState.swift */; };
 		207C720E2BEE6942009F1279 /* SuperHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C720D2BEE6942009F1279 /* SuperHero.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		0ADABEEE31A55503DC03F4FE /* Pods_DemoAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		177FE8967839EA8DD63766DE /* Pods-DemoApp-DemoAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoApp-DemoAppUITests.release.xcconfig"; path = "Target Support Files/Pods-DemoApp-DemoAppUITests/Pods-DemoApp-DemoAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		20127E462BFC127B0041E3D5 /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
 		205789CF2BEBEF1800DEA100 /* HeroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewModel.swift; sourceTree = "<group>"; };
 		207C720A2BEE6809009F1279 /* HeroViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewState.swift; sourceTree = "<group>"; };
 		207C720D2BEE6942009F1279 /* SuperHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperHero.swift; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20127E452BFC12710041E3D5 /* Ui */ = {
+			isa = PBXGroup;
+			children = (
+				20127E462BFC127B0041E3D5 /* Spacing.swift */,
+			);
+			path = Ui;
+			sourceTree = "<group>";
+		};
 		207C720C2BEE6923009F1279 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +236,7 @@
 		20C9DF382BE6F333000E4EAB /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				20127E452BFC12710041E3D5 /* Ui */,
 				207C72242BEEC998009F1279 /* HeroUseCase */,
 				207C720C2BEE6923009F1279 /* Entity */,
 				20C9DF392BE6F395000E4EAB /* Network */,
@@ -568,6 +579,7 @@
 				207C720B2BEE6809009F1279 /* HeroViewState.swift in Sources */,
 				207C72262BEEC9D0009F1279 /* HeroUseCase.swift in Sources */,
 				205789D02BEBEF1800DEA100 /* HeroViewModel.swift in Sources */,
+				20127E472BFC127B0041E3D5 /* Spacing.swift in Sources */,
 				207C722E2BF21CCE009F1279 /* MainCoordinator.swift in Sources */,
 				20C9DF0B2BE6F2B4000E4EAB /* SceneDelegate.swift in Sources */,
 			);

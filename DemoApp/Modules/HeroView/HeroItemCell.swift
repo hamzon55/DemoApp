@@ -45,22 +45,22 @@ class HeroItemCell: UITableViewCell {
         contentView.addSubview(characterImageView)
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-10)
+            make.top.equalToSuperview().offset(Spacing.topOffset)
+            make.leading.equalToSuperview().offset(Spacing.leadingOffset)
+            make.trailing.equalToSuperview().offset(Spacing.trailingOffset)
         }
         
         characterImageView.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(16)
-            make.height.width.equalTo(150)
-            make.bottom.lessThanOrEqualToSuperview().offset(-16)
+            make.top.equalTo(nameLabel.snp.bottom).offset(Spacing.topOffset)
+            make.leading.equalToSuperview().offset(Spacing.leadingOffset)
+            make.height.width.equalTo(Spacing.imageViewSize)
+            make.bottom.lessThanOrEqualToSuperview().offset(Spacing.bottomOffset)
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(4)
-            make.leading.equalTo(characterImageView.snp.trailing).offset(12)
-            make.trailing.lessThanOrEqualToSuperview().offset(-18)
+            make.top.equalTo(nameLabel.snp.bottom).offset(Spacing.topOffset)
+            make.leading.equalTo(characterImageView.snp.trailing).offset(Spacing.imageLeadingOffset)
+            make.trailing.lessThanOrEqualToSuperview().offset(Spacing.descriptionTrailingOffset)
         }
     }
     
