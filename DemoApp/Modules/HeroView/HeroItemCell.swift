@@ -30,11 +30,16 @@ class HeroItemCell: UITableViewCell {
         
         nameLabel.font = UIFont.boldSystemFont(ofSize: 18) 
         nameLabel.textColor = UIColor.black
+        nameLabel.textColor = UIColor { traitCollection in
+                  return traitCollection.userInterfaceStyle == .dark ? .white : .black
+              }
         
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         descriptionLabel.textColor = UIColor.gray
         descriptionLabel.numberOfLines = 5
-
+        descriptionLabel.textColor = UIColor { traitCollection in
+                  return traitCollection.userInterfaceStyle == .dark ? .white : .gray
+              }
         characterImageView.contentMode = .scaleAspectFill
         characterImageView.clipsToBounds = true
         characterImageView.layer.borderWidth = 2

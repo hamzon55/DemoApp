@@ -58,6 +58,10 @@ class HeroViewController: UIViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+        
+        tableView.backgroundColor = UIColor { traitCollection in
+                  return traitCollection.userInterfaceStyle == .dark ? .black : .white
+              }
     }
     
     private func bindViewModel() {
@@ -107,6 +111,9 @@ extension HeroViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeroItemCell", for: indexPath) as! HeroItemCell
         let item = viewModel.items[indexPath.row]
         cell.configure(with: item)
+        cell.backgroundColor = UIColor { traitCollection in
+                  return traitCollection.userInterfaceStyle == .dark ? .black : .white
+              }
         return cell
     }
 }
