@@ -6,8 +6,6 @@
 //
 
 import XCTest
-import Combine
-@testable import DemoApp
 
 final class HeroUseCaseMocks: XCTestCase {
 

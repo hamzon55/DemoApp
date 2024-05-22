@@ -1,10 +1,3 @@
-//
-//  FirstViewModel.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 8/5/24.
-//
-
 import Combine
 import Foundation
 import UIKit
@@ -13,9 +6,10 @@ typealias HeroViewModelOuput = AnyPublisher<HeroViewState, Never>
 
 class HeroViewModel: HeroesViewModelType {
     @Published private(set) var state: HeroViewState = .idle
-    @Published var items: [Character] = []
     private var cancellables = Set<AnyCancellable>()
     let heroUseCase: HeroUseCase
+    
+    @Published var items: [Character] = []
 
     init(heroUseCase: HeroUseCase) {
         self.heroUseCase = heroUseCase
@@ -25,22 +19,27 @@ class HeroViewModel: HeroesViewModelType {
         cancellables.forEach { $0.cancel()}
         cancellables.removeAll()
         
+        // MARK: - on View Appear
         let onAppearAction = input.appear
             .flatMap { [weak self] _ -> AnyPublisher<HeroViewState, Never> in
                 guard let self = self else { return Just(.error("Error ")).eraseToAnyPublisher() }
-                return self.fetchData(query: "")
+                return self.fetchData(query: nil)
             }
             .eraseToAnyPublisher()
         
+        // MARK: - Handle Searching
         let onSearchAction = input.search
-                .debounce(for: .milliseconds(300), scheduler: RunLoop.main) // Debounce to reduce rapid consecutive searches
-                .removeDuplicates()   
-                .flatMap { [weak self] query -> AnyPublisher<HeroViewState, Never> in
-                    guard let self = self else { return Just(.error("Error")).eraseToAnyPublisher() }
-                    return self.fetchData(query: query)
-                }
+            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .removeDuplicates()
         
-        return Publishers.Merge(onAppearAction, onSearchAction)
+        let searchCharacter = onSearchAction
+            .filter({ !$0.isEmpty })
+            .flatMap { [weak self] query -> AnyPublisher<HeroViewState, Never> in
+                guard let self = self else { return Just(.error("Error")).eraseToAnyPublisher() }
+                return self.fetchData(query: query)
+            }
+        
+        return Publishers.Merge(onAppearAction, searchCharacter)
             .removeDuplicates()
             .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
             .eraseToAnyPublisher()

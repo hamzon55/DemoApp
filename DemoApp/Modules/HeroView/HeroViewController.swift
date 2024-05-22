@@ -1,18 +1,21 @@
-
 import UIKit
 import Combine
 import SVProgressHUD
 import SnapKit
 
-class HeroViewController: UIViewController {
-    
+final class HeroViewController: UIViewController {
+        
+    // MARK: - Publishers
+
     private let onAppearPublisher = PassthroughSubject<Void, Never>()
     private let onSelectionPublisher = PassthroughSubject<Int, Never>()
     private let onSearchPublisher = PassthroughSubject<String, Never>()
 
+    // MARK: - Properties
+
     private var tableView: UITableView!
     private var cancellables = Set<AnyCancellable>()
-    private var viewModel = HeroViewModel(heroUseCase: DefaultHeroUseCase(apiClient: URLSessionAPIClient<HeroeEndpoint>()))
+    private var viewModel: HeroViewModel
     var coordinator: MainCoordinator?
     
     private lazy var searchController: UISearchController = {
@@ -23,6 +26,16 @@ class HeroViewController: UIViewController {
         searchController.searchBar.delegate = self
         return searchController
     }()
+    
+    
+    init(viewModel: HeroViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,24 +66,20 @@ class HeroViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
-        tableView.backgroundColor = UIColor { traitCollection in
-                  return traitCollection.userInterfaceStyle == .dark ? .black : .white
-              }
-    }
+                   make.edges.equalToSuperview()
+               }
+               tableView.backgroundColor = .systemBackground
+           }
     
     private func bindViewModel() {
         cancellables.forEach { $0.cancel()}
         cancellables.removeAll()
+        
         let input = HeroViewModelInput(
-            appear: onAppearPublisher.eraseToAnyPublisher(),
-            selection: Publishers.Sequence<[Int], Never>(sequence: []).eraseToAnyPublisher(),
-            search: onSearchPublisher.eraseToAnyPublisher())
+                    appear: onAppearPublisher.eraseToAnyPublisher(),
+                    selection: onSelectionPublisher.eraseToAnyPublisher(),
+                    search: onSearchPublisher.eraseToAnyPublisher()
+                )
         
         let output = viewModel.transform(input: input)
         
@@ -108,7 +117,7 @@ extension HeroViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HeroItemCell", for: indexPath) as! HeroItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: HeroItemCell.cellID, for: indexPath) as! HeroItemCell
         let item = viewModel.items[indexPath.row]
         cell.configure(with: item)
         cell.backgroundColor = UIColor { traitCollection in
