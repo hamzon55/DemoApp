@@ -1,13 +1,5 @@
-//
-//  String+md5.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 13/5/24.
-//
-
 import Foundation
 import CryptoKit
-
 
 extension String {
     func MD5() -> String {

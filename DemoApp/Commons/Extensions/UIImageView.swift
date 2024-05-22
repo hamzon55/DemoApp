@@ -1,12 +1,3 @@
-//
-//  UIImageView.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 15/5/24.
-//
-
-import Foundation
-import UIKit
 import Kingfisher
 
 extension UIImageView {

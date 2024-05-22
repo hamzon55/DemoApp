@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 5/5/24.
-//
-
 import UIKit
 
 @main
@@ -21,6 +14,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-     
     }
 }

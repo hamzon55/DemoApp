@@ -1,5 +1,4 @@
 import Combine
-import Foundation
 import UIKit
 
 typealias HeroViewModelOuput = AnyPublisher<HeroViewState, Never>
@@ -10,7 +9,7 @@ class HeroViewModel: HeroesViewModelType {
     let heroUseCase: HeroUseCase
     
     @Published var items: [Character] = []
-
+    
     init(heroUseCase: HeroUseCase) {
         self.heroUseCase = heroUseCase
     }
