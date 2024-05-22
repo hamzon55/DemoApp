@@ -93,7 +93,6 @@ final class HeroViewController: UIViewController {
         DispatchQueue.main.async {
             switch state {
             case .idle:
-                print("Idle")
                 SVProgressHUD.show()
             case .loading:
                 SVProgressHUD.show()
