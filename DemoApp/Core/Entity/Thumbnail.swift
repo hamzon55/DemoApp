@@ -11,7 +11,6 @@ struct Thumbnail: Codable, Equatable {
     
     var url: URL? { URL(string: "\(path).\(thumbnailExtension)") }
 
-    
     enum CodingKeys: String, CodingKey {
         case path
         case thumbnailExtension = "extension"

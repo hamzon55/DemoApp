@@ -1,7 +1,6 @@
 import Foundation
 import Combine
 
-
 protocol APIClientProtocl {
     func request<T>(_ endpoint: APIEndpoint) -> AnyPublisher<T, APIError> where T: Decodable
 }

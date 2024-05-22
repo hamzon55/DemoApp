@@ -1,8 +1,13 @@
 struct MarvelResponse: Codable {
     var data: HeroClass
     
-    init(data: HeroClass) {
-        self.data = data
+    init(pagination: Pagination,
+         total: Int,
+         count: Int,
+         results: [Character]) {
+        
+        let heroClass = HeroClass(pagination: pagination, total: total, count: count, results: results)
+        self.data = heroClass
     }
 }
 
@@ -14,11 +19,13 @@ struct HeroClass: Codable {
     let count: Int
     var results: [Character]
     
-    init(offset: Int, limit: Int, total: Int, count: Int, results: [Character]) {
-        self.offset = offset
-        self.limit = limit
+    init(pagination: Pagination, total: Int, count: Int, results: [Character]) {
+        self.offset = pagination.offset
+        self.limit = pagination.limit
         self.total = total
         self.count = count
         self.results = results
     }
 }
+
+

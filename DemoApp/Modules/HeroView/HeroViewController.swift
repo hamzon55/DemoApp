@@ -115,7 +115,6 @@ extension HeroViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.items.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HeroItemCell.cellID, for: indexPath) as! HeroItemCell
         let item = viewModel.items[indexPath.row]

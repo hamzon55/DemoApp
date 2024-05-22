@@ -4,27 +4,23 @@ PODS:
   - SVProgressHUD (2.3.1):
     - SVProgressHUD/Core (= 2.3.1)
   - SVProgressHUD/Core (2.3.1)
-  - SwiftLint (0.55.0)
 
 DEPENDENCIES:
   - Kingfisher
   - SnapKit (~> 5.0.0)
   - SVProgressHUD
-  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Kingfisher
     - SnapKit
     - SVProgressHUD
-    - SwiftLint
 
 SPEC CHECKSUMS:
   Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
-  SwiftLint: c5b49076d727b772434318c236548f0a1110c299
 
-PODFILE CHECKSUM: b25ccf86f1f52c392676fe04020ba68286fa9948
+PODFILE CHECKSUM: ec7c1980fea65220fc988c58637137885efaf120
 
 COCOAPODS: 1.15.2

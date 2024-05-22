@@ -1,11 +1,3 @@
-//
-//  MainCoordinator.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 13/5/24.
-//
-
-import Foundation
 import UIKit
 
 class MainCoordinator: Coordinator {
@@ -14,7 +6,6 @@ class MainCoordinator: Coordinator {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-
     }
 
     func start() {
