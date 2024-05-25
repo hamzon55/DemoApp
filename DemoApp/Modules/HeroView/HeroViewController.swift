@@ -94,8 +94,6 @@ final class HeroViewController: UIViewController {
             switch state {
             case .idle:
                 SVProgressHUD.show()
-            case .loading:
-                SVProgressHUD.show()
             case .success(let heroes):
                 SVProgressHUD.dismiss()
                 self.viewModel.items = heroes

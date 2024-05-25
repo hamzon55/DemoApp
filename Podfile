@@ -12,6 +12,7 @@ target 'DemoApp' do
 
   target 'DemoAppTests' do
     inherit! :search_paths
+    pod 'SnapshotTesting'
     # Pods for testing
   end
 

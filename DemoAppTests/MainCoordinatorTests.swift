@@ -25,6 +25,5 @@ final class MainCoordinatorTests: XCTestCase {
         // THEN
         XCTAssertEqual(navigationController.viewControllers.count, numberOfViewController)
         XCTAssertTrue(navigationController.viewControllers.first is HeroViewController, "The first view controller should be of type HeroViewController.")
-        
     }
 }

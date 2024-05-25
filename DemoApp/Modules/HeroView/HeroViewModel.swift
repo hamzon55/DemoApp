@@ -53,7 +53,7 @@ class HeroViewModel: HeroesViewModelType {
             .catch { error -> Just<HeroViewState> in
                 Just(.failure(error))
             }
-            .prepend(.loading)
+            .prepend(.idle)
             .eraseToAnyPublisher()
     }
 }

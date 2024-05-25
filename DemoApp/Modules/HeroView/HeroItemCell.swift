@@ -1,4 +1,3 @@
-import UIKit
 import SnapKit
 import Combine
 
@@ -58,6 +57,7 @@ class HeroItemCell: UITableViewCell {
             make.trailing.lessThanOrEqualToSuperview().offset(Spacing.descriptionTrailingOffset)
         }
     }
+    
     func configure(with item: Character) {
         nameLabel.text = item.name
         descriptionLabel.text = item.descriptionText
