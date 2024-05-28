@@ -4,11 +4,11 @@ import Combine
 
 /// Protocol specifying the task to retrieve heroes.
 protocol HeroUseCase {
-    func getHeroes(query: String?)  -> AnyPublisher<MarvelResponse, APIError>
+    func getHeroes(query: String?,offset: Int, limit: Int)  -> AnyPublisher<MarvelResponse, APIError>
 }
 
 final class DefaultHeroUseCase: HeroUseCase {
-    
+       
     private var apiClient: URLSessionAPIClient<HeroeEndpoint>
 
     /// - Parameter apiClient: The API client for making network requests.
@@ -20,8 +20,8 @@ final class DefaultHeroUseCase: HeroUseCase {
 
     /// - Returns: A publisher emitting `MarvelResponse` or a `HeroUseCaseError` if an error occurs.
 
-    func getHeroes(query: String?) -> AnyPublisher<MarvelResponse, APIError> {
-        apiClient.request(HeroeEndpoint.getHeroes(query: query))
+    func getHeroes(query: String?, offset: Int, limit: Int) -> AnyPublisher<MarvelResponse, APIError> {
+        apiClient.request(HeroeEndpoint.getHeroes(query: query, offset: offset, limit: limit))
             .mapError { _ in APIError.invalidResponse }
                        .eraseToAnyPublisher()
     }

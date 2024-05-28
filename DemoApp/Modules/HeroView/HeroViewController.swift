@@ -10,6 +10,7 @@ final class HeroViewController: UIViewController {
     private let onAppearPublisher = PassthroughSubject<Void, Never>()
     private let onSelectionPublisher = PassthroughSubject<Int, Never>()
     private let onSearchPublisher = PassthroughSubject<String, Never>()
+    private let onLoadMorePublisher = PassthroughSubject<Void, Never>()
 
     // MARK: - Properties
 
@@ -78,7 +79,7 @@ final class HeroViewController: UIViewController {
         let input = HeroViewModelInput(
                     appear: onAppearPublisher.eraseToAnyPublisher(),
                     selection: onSelectionPublisher.eraseToAnyPublisher(),
-                    search: onSearchPublisher.eraseToAnyPublisher()
+                    search: onSearchPublisher.eraseToAnyPublisher(), loadMore: onLoadMorePublisher.eraseToAnyPublisher()
                 )
         
         let output = viewModel.transform(input: input)
@@ -129,10 +130,18 @@ extension HeroViewController: UITableViewDelegate {
         let selectedItem = viewModel.items[indexPath.row]
         print("Selected item: \(selectedItem)")
     }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        searchController.searchBar.resignFirstResponder()
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let offsetY = tableView.contentOffset.y
+        let contentHeight = tableView.contentSize.height
+        let height = tableView.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            onLoadMorePublisher.send()
+        }
     }
 }
+
 // MARK: - Search Delegate
 
 extension HeroViewController: UISearchBarDelegate {
