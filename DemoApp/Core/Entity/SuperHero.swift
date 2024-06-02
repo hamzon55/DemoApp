@@ -15,5 +15,5 @@ public struct Character: Codable, Equatable {
     
     var descriptionText: String {
         return description.isEmpty == false ? description : "Description not available."
-        }
+    }
 }

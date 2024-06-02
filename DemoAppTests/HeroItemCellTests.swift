@@ -6,17 +6,17 @@ class HeroItemCellTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-         SnapshotTesting.isRecording = true
     }
 
     func testHeroItemCellLayout() {
         // Create an instance of HeroItemCell
         let cell = HeroItemCell(style: .default, reuseIdentifier: "HeroItemCell")
-        cell.frame = CGRect(x: 0, y: 0, width: 320, height: 100) // Set a frame for the cell
+        cell.frame = CGRect(x: 0, y: 0, width: 320, height: 176) // Set a frame for the cell
 
         // Configure the cell with test data
-        cell.nameLabel.text = "Iron Man"
-        cell.descriptionLabel.text = "Genius, billionaire, playboy, philanthropist."
+        cell.configure(with: .init(name: "Iron Man", 
+                                   description: "Genius, billionaire, playboy, philanthropist.",
+                                   characterImageURL: nil))
 
         // Manually trigger layout
         cell.setNeedsLayout()

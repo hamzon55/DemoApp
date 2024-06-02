@@ -5,16 +5,25 @@ typealias HeroViewModelOuput = AnyPublisher<HeroViewState, Never>
 
 class HeroViewModel: HeroesViewModelType {
     @Published private(set) var state: HeroViewState = .idle
-    @Published var items: [Character] = []
+    @Published var items: HeroScreenViewModel = .init(heroes: [])
     
-    private var offset = 0
-    private let limit = 20
-
+    private enum Constants {
+        enum ErrorMessage {
+            static let selfError = "Self should not be nil"
+            static let searchError = "Search Error"
+            static let onLoadMoreActionError = "Blablabla"
+        }
+        static let timeout = 300
+    }
+    
     private var cancellables = Set<AnyCancellable>()
     private let heroUseCase: HeroUseCase
+    private let heroViewModelMapper: HeroViewModelMapping
     
-    init(heroUseCase: HeroUseCase) {
+    required init(heroUseCase: HeroUseCase,
+                  heroViewModelMapper: HeroViewModelMapping) {
         self.heroUseCase = heroUseCase
+        self.heroViewModelMapper = heroViewModelMapper
     }
     
     func transform(input: HeroViewModelInput) -> HeroViewModelOuput {
@@ -24,33 +33,31 @@ class HeroViewModel: HeroesViewModelType {
         // MARK: - on View Appear
         let onAppearAction = input.appear
             .flatMap { [weak self] _ -> AnyPublisher<HeroViewState, Never> in
-                guard let self = self else { return Just(.error("Error ")).eraseToAnyPublisher() }
-                self.offset = 0  // Reset offset on appear
-                return self.fetchData(query: nil, offset: self.offset, limit: self.limit)
+                guard let self else { return Just(.error(Constants.ErrorMessage.selfError)).eraseToAnyPublisher() }
+                return self.fetchData(query: nil, offset: self.items.heroes.count)
             }
             .eraseToAnyPublisher()
         
         // MARK: - Handle Searching
         let onSearchAction = input.search
-            .debounce(for: .milliseconds(300), scheduler: RunLoop.main)
+            .debounce(for: .milliseconds(Constants.timeout), scheduler: RunLoop.main)
             .removeDuplicates()
         
         let searchCharacter = onSearchAction
-                    .filter({ !$0.isEmpty })
-                    .flatMap { [weak self] query -> AnyPublisher<HeroViewState, Never> in
-                        guard let self = self else { return Just(.error("Error")).eraseToAnyPublisher() }
-                        self.offset = 0  // Reset offset on new search
-                        return self.fetchData(query: query, offset: self.offset, limit: self.limit)
-                    }
-                    .eraseToAnyPublisher()
+            .filter({ !$0.isEmpty })
+            .flatMap { [weak self] query -> AnyPublisher<HeroViewState, Never> in
+                guard let self = self else { return Just(.error(Constants.ErrorMessage.searchError)).eraseToAnyPublisher() }
+                return self.fetchData(query: query, offset: self.items.heroes.count)
+            }
+            .eraseToAnyPublisher()
         
         // MARK: - Handle Load More
-               let onLoadMoreAction = input.loadMore
-                   .flatMap { [weak self] _ -> AnyPublisher<HeroViewState, Never> in
-                       guard let self = self else { return Just(.error("Error")).eraseToAnyPublisher() }
-                       return self.fetchData(query: nil, offset: self.offset, limit: self.limit)
-                   }
-                   .eraseToAnyPublisher()
+        let onLoadMoreAction = input.loadMore
+            .flatMap { [weak self] _ -> AnyPublisher<HeroViewState, Never> in
+                guard let self = self else { return Just(.error(Constants.ErrorMessage.onLoadMoreActionError)).eraseToAnyPublisher() }
+                return self.fetchData(query: nil, offset: self.items.heroes.count)
+            }
+            .eraseToAnyPublisher()
         
         return Publishers.Merge3(onAppearAction, searchCharacter, onLoadMoreAction)
             .removeDuplicates()
@@ -58,25 +65,24 @@ class HeroViewModel: HeroesViewModelType {
             .eraseToAnyPublisher()
     }
     
-    private func fetchData(query: String?, offset: Int, limit: Int) -> AnyPublisher<HeroViewState, Never> {
-          heroUseCase.getHeroes(query: query, offset: offset, limit: limit)
-              .map { [weak self] response in
-                  if offset == 0 {
-                      self?.items = response.data.results
-                  } else {
-                      self?.items.append(contentsOf: response.data.results)
-                  }
-                  let hasMoreItems = response.data.results.count >= limit
-                  if hasMoreItems {
-                      self?.offset += limit
-                  }
-                  return .success(self?.items ?? [])
-              }
-              .catch { error -> AnyPublisher<HeroViewState, Never> in
-                  return Just(.error("Error: \(error)")).eraseToAnyPublisher()
-              }
-              .prepend(.idle)
-              .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
-              .eraseToAnyPublisher()
-      }
-  }
+    private func fetchData(query: String?, offset: Int) -> AnyPublisher<HeroViewState, Never> {
+        heroUseCase.getHeroes(query: query, offset: offset)
+            .map { [weak self] response in
+                guard let self else { return .error(Constants.ErrorMessage.selfError) }
+                let newItems = heroViewModelMapper.map(response)
+                if response.data.offset == 0 {
+                    self.items = newItems
+                } else {
+                    let items = self.items.heroes + newItems.heroes
+                    self.items = .init(heroes: items)
+                }
+                return .success(self.items)
+            }
+            .catch { error -> AnyPublisher<HeroViewState, Never> in
+                return Just(.error("Error: \(error)")).eraseToAnyPublisher()
+            }
+            .prepend(.idle)
+            .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
+            .eraseToAnyPublisher()
+    }
+}

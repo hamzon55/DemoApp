@@ -2,8 +2,8 @@ import Foundation
 
 enum HeroeEndpoint: APIEndpoint {
     
-    case getHeroes(query: String?, offset: Int, limit: Int)
-
+    case getHeroes(query: String?, offset: Int, limit: Int) // poner en un modelo
+    
     var baseURL: URL {
         return MarvelConstants.baseUrl
     }
@@ -30,21 +30,21 @@ enum HeroeEndpoint: APIEndpoint {
     }
     
     var parameters: [String: Any]? {
-            var params: [String: Any] = [
-                "ts": MarvelConstants.timestamp,
-                "apikey": MarvelConstants.apiKey,
-                "hash": MarvelConstants.hash
-            ]
-            
-            switch self {
-            case let .getHeroes(query, offset, limit):
-                if let query = query, !query.isEmpty {
-                    params["nameStartsWith"] = query
-                }
-                params["offset"] = offset
-                params["limit"] = limit
+        var params: [String: Any] = [
+            "ts": MarvelConstants.timestamp,
+            "apikey": MarvelConstants.apiKey,
+            "hash": MarvelConstants.hash
+        ]
+        
+        switch self {
+        case let .getHeroes(query, offset, limit):
+            if let query = query, !query.isEmpty {
+                params["nameStartsWith"] = query
             }
-            
-            return params.isEmpty ? nil : params
+            params["offset"] = offset
+            params["limit"] = limit
         }
+        
+        return params.isEmpty ? nil : params
     }
+}

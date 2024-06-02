@@ -6,7 +6,7 @@ protocol HeroesViewModelType: AnyObject {
 
 public enum HeroViewState {
     case idle
-    case success([Character])
+    case success(HeroScreenViewModel)
     case failure(Error)
     case error(String)
 }

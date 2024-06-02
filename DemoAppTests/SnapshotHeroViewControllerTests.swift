@@ -11,24 +11,55 @@ import SnapshotTesting
 @testable import DemoApp
 
 final class SnapshotHeroViewControllerTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    private var viewModel: HeroViewModel!
+    
+    override class func setUp() {
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+    
     func testHeroViewControllerAppearance() {
-            let viewModel = HeroViewModel(heroUseCase: MockHeroUseCase())
-            let viewController = HeroViewController(viewModel: viewModel)
+        givenSUT(mapperResponse: Constants.Responses.full)
+        let viewController = HeroViewController(viewModel: viewModel)
         
-            viewController.viewDidLoad()
-
-            // Force the view to load
-            viewController.loadViewIfNeeded()
-
-            assertSnapshot(matching: viewController, as: .image)
+        viewController.viewDidLoad()
+        
+        // Force the view to load
+        viewController.loadViewIfNeeded()
+        
+        assertSnapshot(matching: viewController, as: .image)
+    }
+    
+    func givenSUT(mapperResponse: [HeroItemCellViewModel]) {
+        let mapperMock = HeroViewModelMappingMock(response: .init(heroes: mapperResponse))
+        viewModel = HeroViewModel(heroUseCase: MockHeroUseCase(),
+                                  heroViewModelMapper: mapperMock)
+    }
+    
+    private enum Constants {
+        enum Responses {
+            static let full: [HeroItemCellViewModel] = [
+                .init(name: "Name1",
+                      description: "Description1",
+                      characterImageURL: nil),
+                .init(name: "Name2",
+                      description: "Description2",
+                      characterImageURL: nil),
+            ]
         }
+    }
+}
+
+// move this to another file
+class HeroViewModelMappingMock: HeroViewModelMapping {
+  
+    
+    private let response: DemoApp.HeroScreenViewModel
+    
+    init(response: DemoApp.HeroScreenViewModel) {
+        self.response = response
+    }
+    
+    func map(_ input: DemoApp.MarvelResponse) -> DemoApp.HeroScreenViewModel {
+        response
+    }
 }

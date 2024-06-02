@@ -4,16 +4,16 @@ import SVProgressHUD
 import SnapKit
 
 final class HeroViewController: UIViewController {
-        
+    
     // MARK: - Publishers
-
+    
     private let onAppearPublisher = PassthroughSubject<Void, Never>()
     private let onSelectionPublisher = PassthroughSubject<Int, Never>()
     private let onSearchPublisher = PassthroughSubject<String, Never>()
     private let onLoadMorePublisher = PassthroughSubject<Void, Never>()
-
+    
     // MARK: - Properties
-
+    
     private var tableView: UITableView!
     private var cancellables = Set<AnyCancellable>()
     private var viewModel: HeroViewModel
@@ -67,20 +67,20 @@ final class HeroViewController: UIViewController {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
-                   make.edges.equalToSuperview()
-               }
-               tableView.backgroundColor = .systemBackground
-           }
+            make.edges.equalToSuperview()
+        }
+        tableView.backgroundColor = .systemBackground
+    }
     
     private func bindViewModel() {
         cancellables.forEach { $0.cancel()}
         cancellables.removeAll()
         
         let input = HeroViewModelInput(
-                    appear: onAppearPublisher.eraseToAnyPublisher(),
-                    selection: onSelectionPublisher.eraseToAnyPublisher(),
-                    search: onSearchPublisher.eraseToAnyPublisher(), loadMore: onLoadMorePublisher.eraseToAnyPublisher()
-                )
+            appear: onAppearPublisher.eraseToAnyPublisher(),
+            selection: onSelectionPublisher.eraseToAnyPublisher(),
+            search: onSearchPublisher.eraseToAnyPublisher(), loadMore: onLoadMorePublisher.eraseToAnyPublisher()
+        )
         
         let output = viewModel.transform(input: input)
         
@@ -103,7 +103,7 @@ final class HeroViewController: UIViewController {
                 SVProgressHUD.dismiss()
             case .error(_):
                 SVProgressHUD.dismiss()
-
+                
             }
         }
     }
@@ -111,15 +111,15 @@ final class HeroViewController: UIViewController {
 
 extension HeroViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items.count
+        return viewModel.items.heroes.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HeroItemCell.cellID, for: indexPath) as! HeroItemCell
-        let item = viewModel.items[indexPath.row]
+        let item = viewModel.items.heroes[indexPath.row]
         cell.configure(with: item)
         cell.backgroundColor = UIColor { traitCollection in
-                  return traitCollection.userInterfaceStyle == .dark ? .black : .white
-              }
+            return traitCollection.userInterfaceStyle == .dark ? .black : .white
+        }
         return cell
     }
 }
@@ -127,9 +127,10 @@ extension HeroViewController: UITableViewDataSource {
 extension HeroViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedItem = viewModel.items[indexPath.row]
+        let selectedItem = viewModel.items.heroes[indexPath.row]
         print("Selected item: \(selectedItem)")
     }
+    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let offsetY = tableView.contentOffset.y

@@ -1,17 +1,28 @@
 import SnapKit
 import Combine
 
+public struct HeroScreenViewModel: Equatable {
+    public let heroes: [HeroItemCellViewModel]
+}
+
+public struct HeroItemCellViewModel: Equatable {
+    let name: String
+    let description: String
+    let characterImageURL: URL?
+}
+
 class HeroItemCell: UITableViewCell {
     static let cellID = "HeroItemCell"
-
-    let nameLabel = UILabel()
-    let descriptionLabel = UILabel()
-    let characterImageView = UIImageView()
+    
+    private let nameLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let characterImageView = UIImageView()
     private var cancellable: AnyCancellable?
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        setupConstraints()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -25,21 +36,22 @@ class HeroItemCell: UITableViewCell {
         nameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         nameLabel.textColor = UIColor.black
         nameLabel.textColor = UIColor { traitCollection in
-                  return traitCollection.userInterfaceStyle == .dark ? .white : .black
-              }
+            return traitCollection.userInterfaceStyle == .dark ? .white : .black
+        }
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         descriptionLabel.textColor = UIColor.gray
         descriptionLabel.numberOfLines = 5
         descriptionLabel.textColor = UIColor { traitCollection in
-                  return traitCollection.userInterfaceStyle == .dark ? .white : .gray
-              }
+            return traitCollection.userInterfaceStyle == .dark ? .white : .gray
+        }
         characterImageView.contentMode = .scaleAspectFill
         characterImageView.clipsToBounds = true
         characterImageView.layer.borderWidth = 2
         characterImageView.layer.borderColor = UIColor.white.cgColor
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(descriptionLabel)
-        contentView.addSubview(characterImageView)
+        [nameLabel, descriptionLabel, characterImageView].forEach { addSubview($0)}
+    }
+    
+    private func setupConstraints() {
         nameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(Spacing.topOffset)
             make.leading.equalToSuperview().offset(Spacing.leadingOffset)
@@ -58,12 +70,12 @@ class HeroItemCell: UITableViewCell {
         }
     }
     
-    func configure(with item: Character) {
-        nameLabel.text = item.name
-        descriptionLabel.text = item.descriptionText
-        characterImageView.download(image: item.thumbnail.url)
+    func configure(with viewModel: HeroItemCellViewModel) {
+        nameLabel.text = viewModel.name
+        descriptionLabel.text = viewModel.description
+        characterImageView.download(image: viewModel.characterImageURL)
     }
-
+    
     private func cancelImageLoading() {
         characterImageView.image = nil
         cancellable?.cancel()

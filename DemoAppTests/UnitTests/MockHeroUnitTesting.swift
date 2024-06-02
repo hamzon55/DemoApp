@@ -17,7 +17,7 @@ final class MockHeroUseCaseTests: XCTestCase {
         mockUseCase.getHeroesResult = Just(mockResponse)
             .setFailureType(to: APIError.self)
             .eraseToAnyPublisher()
-        let publisher = mockUseCase.getHeroes(query: nil)
+        let publisher = mockUseCase.getHeroes(query: nil, offset: 0, limit: 0)
         
         XCTAssertTrue(mockUseCase.getHeroesCalled)
         XCTAssertNil(mockUseCase.getHeroesQuery)
