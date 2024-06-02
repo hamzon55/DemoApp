@@ -131,13 +131,11 @@ extension HeroViewController: UITableViewDelegate {
         print("Selected item: \(selectedItem)")
     }
     
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let offsetY = tableView.contentOffset.y
-        let contentHeight = tableView.contentSize.height
-        let height = tableView.frame.size.height
+        let totalRows = tableView.numberOfRows(inSection: indexPath.section)
+        let threshold = totalRows - 3 
         
-        if offsetY > contentHeight - height {
+        if indexPath.row == threshold {
             onLoadMorePublisher.send()
         }
     }
