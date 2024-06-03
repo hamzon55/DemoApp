@@ -1,10 +1,3 @@
-//
-//  HeroViewModelMapper.swift
-//  DemoApp
-//
-//  Created by HamZa Jerbi on 2/6/24.
-//
-
 import Foundation
 
 protocol HeroViewModelMapping {
