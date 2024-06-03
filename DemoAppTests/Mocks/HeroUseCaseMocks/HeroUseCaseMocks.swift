@@ -1,10 +1,3 @@
-//
-//  HeroUseCaseMocks.swift
-//  DemoAppTests
-//
-//  Created by HamZa Jerbi on 24/5/24.
-//
-
 import XCTest
 import UIKit
 import Combine
@@ -12,12 +5,11 @@ import Combine
 
 final class MockHeroUseCase: HeroUseCase {
   
-    
     var getHeroesCalled = false
     var getHeroesQuery: String?
     var getHeroesResult: AnyPublisher<MarvelResponse, APIError>!
     
-    func getHeroes(query: String?, offset: Int) -> AnyPublisher<DemoApp.MarvelResponse, DemoApp.APIError> {
+    func getHeroes(query: String?, offset: Int) -> AnyPublisher<MarvelResponse, APIError> {
     
         getHeroesCalled = true
         getHeroesQuery = query
