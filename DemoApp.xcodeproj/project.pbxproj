@@ -27,9 +27,9 @@
 		207C723B2BF3B62B009F1279 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C723A2BF3B62B009F1279 /* Thumbnail.swift */; };
 		207C723F2BF4D2B9009F1279 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C723E2BF4D2B9009F1279 /* UIImageView.swift */; };
 		20A985E82C0DF8DC0008DADA /* HeroViewMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A985E72C0DF8DC0008DADA /* HeroViewMappingTests.swift */; };
-		20A985EA2C0DFAF30008DADA /* DefaultHeroUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A985E92C0DFAF30008DADA /* DefaultHeroUseCaseTests.swift */; };
 		20A985EC2C0DFBD00008DADA /* HeroViewModelMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A985EB2C0DFBD00008DADA /* HeroViewModelMapperTests.swift */; };
 		20A985EE2C0E18FF0008DADA /* HeroViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A985ED2C0E18FF0008DADA /* HeroViewModelTests.swift */; };
+		20A985F02C0E1E150008DADA /* MockHeroViewModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A985EF2C0E1E150008DADA /* MockHeroViewModelMapper.swift */; };
 		20B788722C00C2260087568C /* HeroItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B788712C00C2260087568C /* HeroItemCellTests.swift */; };
 		20B788742C00E7930087568C /* SnapshotHeroViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B788732C00E7930087568C /* SnapshotHeroViewControllerTests.swift */; };
 		20B788782C00EC960087568C /* HeroUseCaseMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B788772C00EC960087568C /* HeroUseCaseMocks.swift */; };
@@ -92,9 +92,9 @@
 		207C723A2BF3B62B009F1279 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		207C723E2BF4D2B9009F1279 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		20A985E72C0DF8DC0008DADA /* HeroViewMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewMappingTests.swift; sourceTree = "<group>"; };
-		20A985E92C0DFAF30008DADA /* DefaultHeroUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHeroUseCaseTests.swift; sourceTree = "<group>"; };
 		20A985EB2C0DFBD00008DADA /* HeroViewModelMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewModelMapperTests.swift; sourceTree = "<group>"; };
 		20A985ED2C0E18FF0008DADA /* HeroViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewModelTests.swift; sourceTree = "<group>"; };
+		20A985EF2C0E1E150008DADA /* MockHeroViewModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHeroViewModelMapper.swift; sourceTree = "<group>"; };
 		20B788712C00C2260087568C /* HeroItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroItemCellTests.swift; sourceTree = "<group>"; };
 		20B788732C00E7930087568C /* SnapshotHeroViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHeroViewControllerTests.swift; sourceTree = "<group>"; };
 		20B788772C00EC960087568C /* HeroUseCaseMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCaseMocks.swift; sourceTree = "<group>"; };
@@ -174,7 +174,6 @@
 			children = (
 				20B7887B2C00EEB40087568C /* Network */,
 				20127E572BFD48D50041E3D5 /* HeroUseCaseMocks */,
-				20A985EB2C0DFBD00008DADA /* HeroViewModelMapperTests.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -182,8 +181,9 @@
 		20127E562BFD486B0041E3D5 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				20E093FC2BED854C00345150 /* MainCoordinatorTests.swift */,
+				20A985EB2C0DFBD00008DADA /* HeroViewModelMapperTests.swift */,
 				20B788792C00EE590087568C /* MockHeroUnitTesting.swift */,
-				20A985E92C0DFAF30008DADA /* DefaultHeroUseCaseTests.swift */,
 				20A985ED2C0E18FF0008DADA /* HeroViewModelTests.swift */,
 			);
 			path = UnitTests;
@@ -192,7 +192,9 @@
 		20127E572BFD48D50041E3D5 /* HeroUseCaseMocks */ = {
 			isa = PBXGroup;
 			children = (
+				20A985E72C0DF8DC0008DADA /* HeroViewMappingTests.swift */,
 				20B788772C00EC960087568C /* HeroUseCaseMocks.swift */,
+				20A985EF2C0E1E150008DADA /* MockHeroViewModelMapper.swift */,
 			);
 			path = HeroUseCaseMocks;
 			sourceTree = "<group>";
@@ -300,14 +302,12 @@
 		20C9DF1E2BE6F2B5000E4EAB /* DemoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				20127E562BFD486B0041E3D5 /* UnitTests */,
-				20127E552BFD48650041E3D5 /* Mocks */,
-				20127E4A2BFD464F0041E3D5 /* Responses */,
-				20E093FC2BED854C00345150 /* MainCoordinatorTests.swift */,
 				20127E5C2BFD4BF90041E3D5 /* LoadFromJsonFile.swift */,
 				20B788712C00C2260087568C /* HeroItemCellTests.swift */,
 				20B788732C00E7930087568C /* SnapshotHeroViewControllerTests.swift */,
-				20A985E72C0DF8DC0008DADA /* HeroViewMappingTests.swift */,
+				20127E562BFD486B0041E3D5 /* UnitTests */,
+				20127E552BFD48650041E3D5 /* Mocks */,
+				20127E4A2BFD464F0041E3D5 /* Responses */,
 			);
 			path = DemoAppTests;
 			sourceTree = "<group>";
@@ -705,12 +705,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				20E093FD2BED854C00345150 /* MainCoordinatorTests.swift in Sources */,
+				20A985F02C0E1E150008DADA /* MockHeroViewModelMapper.swift in Sources */,
 				20B7887D2C00EEC60087568C /* MockApiClient.swift in Sources */,
 				20A985EC2C0DFBD00008DADA /* HeroViewModelMapperTests.swift in Sources */,
 				20127E5D2BFD4BF90041E3D5 /* LoadFromJsonFile.swift in Sources */,
 				20B788742C00E7930087568C /* SnapshotHeroViewControllerTests.swift in Sources */,
 				20B7887A2C00EE590087568C /* MockHeroUnitTesting.swift in Sources */,
-				20A985EA2C0DFAF30008DADA /* DefaultHeroUseCaseTests.swift in Sources */,
 				20A985E82C0DF8DC0008DADA /* HeroViewMappingTests.swift in Sources */,
 				20B788722C00C2260087568C /* HeroItemCellTests.swift in Sources */,
 				20A985EE2C0E18FF0008DADA /* HeroViewModelTests.swift in Sources */,

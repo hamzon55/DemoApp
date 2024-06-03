@@ -110,7 +110,6 @@ final class HeroViewModelTests: XCTestCase {
            
            // Send the load more event
            loadMoreSubject.send(())
-           
            wait(for: [expectation], timeout: 2.0)
        }
    }
