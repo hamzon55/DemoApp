@@ -49,17 +49,3 @@ final class SnapshotHeroViewControllerTests: XCTestCase {
     }
 }
 
-// move this to another file
-class HeroViewModelMappingMock: HeroViewModelMapping {
-  
-    
-    private let response: DemoApp.HeroScreenViewModel
-    
-    init(response: DemoApp.HeroScreenViewModel) {
-        self.response = response
-    }
-    
-    func map(_ input: DemoApp.MarvelResponse) -> DemoApp.HeroScreenViewModel {
-        response
-    }
-}

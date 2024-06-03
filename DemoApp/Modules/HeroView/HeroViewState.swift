@@ -4,7 +4,7 @@ protocol HeroesViewModelType: AnyObject {
     func transform(input: HeroViewModelInput) -> HeroViewModelOuput
 }
 
-public enum HeroViewState {
+enum HeroViewState {
     case idle
     case success(HeroScreenViewModel)
     case failure(Error)

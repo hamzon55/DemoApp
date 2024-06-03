@@ -1,11 +1,11 @@
 import SnapKit
 import Combine
 
-public struct HeroScreenViewModel: Equatable {
+struct HeroScreenViewModel: Equatable {
     public let heroes: [HeroItemCellViewModel]
 }
 
-public struct HeroItemCellViewModel: Equatable {
+struct HeroItemCellViewModel: Equatable {
     let name: String
     let description: String
     let characterImageURL: URL?

@@ -1,6 +1,6 @@
 import XCTest
 import SnapshotTesting
-@testable import DemoApp // Replace with your app module name
+@testable import DemoApp 
 
 class HeroItemCellTests: XCTestCase {
 

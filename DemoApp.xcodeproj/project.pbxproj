@@ -26,6 +26,7 @@
 		207C72372BF25C75009F1279 /* MarvelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C72362BF25C75009F1279 /* MarvelResponse.swift */; };
 		207C723B2BF3B62B009F1279 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C723A2BF3B62B009F1279 /* Thumbnail.swift */; };
 		207C723F2BF4D2B9009F1279 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C723E2BF4D2B9009F1279 /* UIImageView.swift */; };
+		20A985E82C0DF8DC0008DADA /* HeroViewMappingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A985E72C0DF8DC0008DADA /* HeroViewMappingTests.swift */; };
 		20B788722C00C2260087568C /* HeroItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B788712C00C2260087568C /* HeroItemCellTests.swift */; };
 		20B788742C00E7930087568C /* SnapshotHeroViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B788732C00E7930087568C /* SnapshotHeroViewControllerTests.swift */; };
 		20B788782C00EC960087568C /* HeroUseCaseMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B788772C00EC960087568C /* HeroUseCaseMocks.swift */; };
@@ -36,7 +37,6 @@
 		20C9DF0D2BE6F2B4000E4EAB /* HeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF0C2BE6F2B4000E4EAB /* HeroViewController.swift */; };
 		20C9DF122BE6F2B5000E4EAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C9DF112BE6F2B5000E4EAB /* Assets.xcassets */; };
 		20C9DF152BE6F2B5000E4EAB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 20C9DF142BE6F2B5000E4EAB /* Base */; };
-		20C9DF202BE6F2B5000E4EAB /* DemoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF1F2BE6F2B5000E4EAB /* DemoAppTests.swift */; };
 		20C9DF2A2BE6F2B5000E4EAB /* DemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF292BE6F2B5000E4EAB /* DemoAppUITests.swift */; };
 		20C9DF3B2BE6F3EF000E4EAB /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3A2BE6F3EF000E4EAB /* APIEndpoint.swift */; };
 		20C9DF3D2BE6F725000E4EAB /* HeroeEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C9DF3C2BE6F725000E4EAB /* HeroeEndpoint.swift */; };
@@ -88,6 +88,7 @@
 		207C72362BF25C75009F1279 /* MarvelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelResponse.swift; sourceTree = "<group>"; };
 		207C723A2BF3B62B009F1279 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		207C723E2BF4D2B9009F1279 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		20A985E72C0DF8DC0008DADA /* HeroViewMappingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewMappingTests.swift; sourceTree = "<group>"; };
 		20B788712C00C2260087568C /* HeroItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroItemCellTests.swift; sourceTree = "<group>"; };
 		20B788732C00E7930087568C /* SnapshotHeroViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHeroViewControllerTests.swift; sourceTree = "<group>"; };
 		20B788772C00EC960087568C /* HeroUseCaseMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroUseCaseMocks.swift; sourceTree = "<group>"; };
@@ -101,7 +102,6 @@
 		20C9DF142BE6F2B5000E4EAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20C9DF162BE6F2B5000E4EAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20C9DF1B2BE6F2B5000E4EAB /* DemoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20C9DF1F2BE6F2B5000E4EAB /* DemoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppTests.swift; sourceTree = "<group>"; };
 		20C9DF252BE6F2B5000E4EAB /* DemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C9DF292BE6F2B5000E4EAB /* DemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAppUITests.swift; sourceTree = "<group>"; };
 		20C9DF3A2BE6F3EF000E4EAB /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
@@ -186,13 +186,6 @@
 				20B788772C00EC960087568C /* HeroUseCaseMocks.swift */,
 			);
 			path = HeroUseCaseMocks;
-			sourceTree = "<group>";
-		};
-		20127E5E2BFD503B0041E3D5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		20347F442C07361600681875 /* HeroDetails */ = {
@@ -298,15 +291,14 @@
 		20C9DF1E2BE6F2B5000E4EAB /* DemoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				20127E5E2BFD503B0041E3D5 /* Models */,
 				20127E562BFD486B0041E3D5 /* UnitTests */,
 				20127E552BFD48650041E3D5 /* Mocks */,
 				20127E4A2BFD464F0041E3D5 /* Responses */,
-				20C9DF1F2BE6F2B5000E4EAB /* DemoAppTests.swift */,
 				20E093FC2BED854C00345150 /* MainCoordinatorTests.swift */,
 				20127E5C2BFD4BF90041E3D5 /* LoadFromJsonFile.swift */,
 				20B788712C00C2260087568C /* HeroItemCellTests.swift */,
 				20B788732C00E7930087568C /* SnapshotHeroViewControllerTests.swift */,
+				20A985E72C0DF8DC0008DADA /* HeroViewMappingTests.swift */,
 			);
 			path = DemoAppTests;
 			sourceTree = "<group>";
@@ -705,10 +697,10 @@
 			files = (
 				20E093FD2BED854C00345150 /* MainCoordinatorTests.swift in Sources */,
 				20B7887D2C00EEC60087568C /* MockApiClient.swift in Sources */,
-				20C9DF202BE6F2B5000E4EAB /* DemoAppTests.swift in Sources */,
 				20127E5D2BFD4BF90041E3D5 /* LoadFromJsonFile.swift in Sources */,
 				20B788742C00E7930087568C /* SnapshotHeroViewControllerTests.swift in Sources */,
 				20B7887A2C00EE590087568C /* MockHeroUnitTesting.swift in Sources */,
+				20A985E82C0DF8DC0008DADA /* HeroViewMappingTests.swift in Sources */,
 				20B788722C00C2260087568C /* HeroItemCellTests.swift in Sources */,
 				20B788782C00EC960087568C /* HeroUseCaseMocks.swift in Sources */,
 			);

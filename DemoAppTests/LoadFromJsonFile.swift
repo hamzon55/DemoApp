@@ -1,10 +1,3 @@
-//
-//  LoadFromJsonFile.swift
-//  DemoAppTests
-//
-//  Created by HamZa Jerbi on 21/5/24.
-//
-
 import XCTest
 @testable import DemoApp
 import Foundation
