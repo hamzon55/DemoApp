@@ -14,8 +14,9 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: false)
     }
     
-    func navigateToHeroDetail() {
-          let detailViewController = HeroDetailsViewController()
-          navigationController.pushViewController(detailViewController, animated: true)
+    func navigateToHeroDetail(hero: HeroItemCellViewModel) {
+        let heroViewModel = HeroDetailViewModel(heroItem: hero)
+        let detailViewController =  HeroDetailsViewController(viewModel: heroViewModel)
+        navigationController.pushViewController(detailViewController, animated: true)
       }
 }

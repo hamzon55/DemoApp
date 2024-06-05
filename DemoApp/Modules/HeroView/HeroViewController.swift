@@ -128,7 +128,7 @@ extension HeroViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedItem = viewModel.items.heroes[indexPath.row]
-        coordinator?.navigateToHeroDetail()
+        coordinator?.navigateToHeroDetail(hero: selectedItem)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

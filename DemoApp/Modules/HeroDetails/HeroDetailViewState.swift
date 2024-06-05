@@ -1,12 +1,12 @@
 import Combine
 protocol HeroeDetailViewModelType: AnyObject {
-   // func transform(input: HeroDetailViewModelInput) -> HeroDetailViewModelOuput
+    func transform(input: HeroDetailViewModelInput) -> HeroDetailViewModelOuput
 }
 
 
-public enum HeroDetailViewState {
+ enum HeroDetailViewState {
     case idle
-    case success([Character])
+    case success(HeroItemCellViewModel)
     case error(String)
 }
 
