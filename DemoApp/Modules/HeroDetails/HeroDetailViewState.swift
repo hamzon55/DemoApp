@@ -1,6 +1,6 @@
 import Combine
 protocol HeroeDetailViewModelType: AnyObject {
-    func transform(input: HeroDetailViewModelInput) -> HeroDetailViewModelOuput
+   // func transform(input: HeroDetailViewModelInput) -> HeroDetailViewModelOuput
 }
 
 
