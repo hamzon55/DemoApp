@@ -7,12 +7,13 @@ class HeroViewModel: HeroesViewModelType {
     @Published private(set) var state: HeroViewState = .idle
     @Published var items: HeroScreenViewModel = .init(heroes: [])
     private let coordinator: MainCoordinator
-
+    
     private enum Constants {
         enum ErrorMessage {
             static let selfError = "Self should not be nil"
             static let searchError = "Search Error"
-            static let onLoadMoreActionError = "Blablabla"
+            static let onLoadMoreActionError = "No more Data"
+            static let onSelectionError  =  "Index Error"
         }
         static let timeout = 300
     }
@@ -27,7 +28,6 @@ class HeroViewModel: HeroesViewModelType {
         self.heroUseCase = heroUseCase
         self.heroViewModelMapper = heroViewModelMapper
         self.coordinator = coordinator
-
     }
     
     func transform(input: HeroViewModelInput) -> HeroViewModelOuput {
@@ -57,15 +57,14 @@ class HeroViewModel: HeroesViewModelType {
         
         
         let onSelectionAction = input.selection
-                   .map { [weak self] index -> HeroViewState in
-                       guard let self = self else {
-                           return .error(Constants.ErrorMessage.selfError)
-                       }
-                       self.coordinator.navigateToHeroDetail(hero: self.items.heroes[index])
-                       debugPrint(self.coordinator)
-                       return .success(self.items)
-                   }
-                   .eraseToAnyPublisher()
+            .map { [weak self] index -> HeroViewState in
+                guard let self = self else {
+                    return .error(Constants.ErrorMessage.onSelectionError)
+                }
+                self.coordinator.navigateToHeroDetail(hero: self.items.heroes[index])
+                return .success(self.items)
+            }
+            .eraseToAnyPublisher()
         
         // MARK: - Handle Load More
         let onLoadMoreAction = input.loadMore

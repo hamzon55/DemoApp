@@ -1,5 +1,6 @@
 import UIKit
 import Combine
+import SVProgressHUD
 
 class HeroDetailsViewController: UIViewController {
     
@@ -7,6 +8,8 @@ class HeroDetailsViewController: UIViewController {
     private let onAppearPublisher = PassthroughSubject<Void, Never>()
     var cancellables = Set<AnyCancellable>()
     
+    private var customView: HeroHeaderView!
+
     init(viewModel: HeroDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -16,16 +19,6 @@ class HeroDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false // Disable autoresizing mask constraints
-        return label
-    }()
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -34,12 +27,15 @@ class HeroDetailsViewController: UIViewController {
     
     
     private func setupUI() {
-        view.addSubview(titleLabel)
         self.view.backgroundColor = .white
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        customView = HeroHeaderView()
+        
+        view.addSubview(customView)
+        customView.snp.makeConstraints { make in
+            make.center.equalTo(view)
+            make.width.equalTo(200)
+            make.height.equalTo(100)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,19 +58,16 @@ class HeroDetailsViewController: UIViewController {
         .store(in: &cancellables)
     }
     
-    
     private func updateUI(_ state: HeroDetailViewState) {
         // Update UI based on the view state
         switch state {
         case .idle:
-            // Handle idle state
-            break
+            SVProgressHUD.dismiss()
         case .success(let heroDetail):
-            titleLabel.text = heroDetail.name
+            customView.apply(viewModel: heroDetail)
         case .error(let message):
-            // Handle error state
-            // Show error message
-            break
+            SVProgressHUD.dismiss()
+
         }
     }
 }
