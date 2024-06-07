@@ -6,7 +6,8 @@ typealias HeroViewModelOuput = AnyPublisher<HeroViewState, Never>
 class HeroViewModel: HeroesViewModelType {
     @Published private(set) var state: HeroViewState = .idle
     @Published var items: HeroScreenViewModel = .init(heroes: [])
-    
+    private let coordinator: MainCoordinator
+
     private enum Constants {
         enum ErrorMessage {
             static let selfError = "Self should not be nil"
@@ -21,9 +22,12 @@ class HeroViewModel: HeroesViewModelType {
     private let heroViewModelMapper: HeroViewModelMapping
     
     required init(heroUseCase: HeroUseCase,
-                  heroViewModelMapper: HeroViewModelMapping) {
+                  heroViewModelMapper: HeroViewModelMapping,
+                  coordinator: MainCoordinator) {
         self.heroUseCase = heroUseCase
         self.heroViewModelMapper = heroViewModelMapper
+        self.coordinator = coordinator
+
     }
     
     func transform(input: HeroViewModelInput) -> HeroViewModelOuput {
@@ -51,6 +55,18 @@ class HeroViewModel: HeroesViewModelType {
             }
             .eraseToAnyPublisher()
         
+        
+        let onSelectionAction = input.selection
+                   .map { [weak self] index -> HeroViewState in
+                       guard let self = self else {
+                           return .error(Constants.ErrorMessage.selfError)
+                       }
+                       self.coordinator.navigateToHeroDetail(hero: self.items.heroes[index])
+                       debugPrint(self.coordinator)
+                       return .success(self.items)
+                   }
+                   .eraseToAnyPublisher()
+        
         // MARK: - Handle Load More
         let onLoadMoreAction = input.loadMore
             .flatMap { [weak self] _ -> AnyPublisher<HeroViewState, Never> in
@@ -59,7 +75,7 @@ class HeroViewModel: HeroesViewModelType {
             }
             .eraseToAnyPublisher()
         
-        return Publishers.Merge3(onAppearAction, searchCharacter, onLoadMoreAction)
+        return Publishers.Merge4(onAppearAction, searchCharacter, onLoadMoreAction, onSelectionAction)
             .removeDuplicates()
             .handleEvents(receiveOutput: { [weak self] in self?.state = $0 })
             .eraseToAnyPublisher()

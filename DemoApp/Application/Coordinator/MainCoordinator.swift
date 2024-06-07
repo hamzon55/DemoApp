@@ -9,7 +9,7 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-        let viewController = HeroViewController(viewModel: HeroViewModelFactory.createViewModel())
+        let viewController = HeroViewController(viewModel: HeroViewModelFactory.createViewModel(coordinator: self))
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: false)
     }

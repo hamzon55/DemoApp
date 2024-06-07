@@ -1,10 +1,11 @@
 class HeroViewModelFactory {
     
-    static func createViewModel() -> HeroViewModel {
+    static func createViewModel(coordinator: MainCoordinator) -> HeroViewModel {
         let apiClient = URLSessionAPIClient<HeroeEndpoint>()
         let heroUseCase = DefaultHeroUseCase(apiClient: apiClient)
         let mapper = HeroViewModelMapper()
         return .init(heroUseCase: heroUseCase,
-                     heroViewModelMapper: mapper)
+                     heroViewModelMapper: mapper,
+                     coordinator: coordinator)
     }
 }

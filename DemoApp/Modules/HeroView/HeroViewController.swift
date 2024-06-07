@@ -127,8 +127,7 @@ extension HeroViewController: UITableViewDataSource {
 extension HeroViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedItem = viewModel.items.heroes[indexPath.row]
-        coordinator?.navigateToHeroDetail(hero: selectedItem)
+        onSelectionPublisher.send(indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
